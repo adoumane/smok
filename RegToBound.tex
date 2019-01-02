@@ -1,0 +1,19 @@
+\begin{lemma}
+Let $M$ be a monoid whose multiplication relation is $\cdot$ and $\mu:\Sigma^*\to M$ be a morphism. Let $w_1,w_2, w_3\in\Sigma^*$ such that there exits $x,y,z,t,e,f\in M$ satisfying:
+\begin{itemize}
+\item $\mu(w_1w_2)=x\cdot e$ and $\mu(w_3)=e\cdot y$,
+\item $\mu(w_1)=z\cdot f$ and $\mu(w_2w_3)=f\cdot t$,
+\item $e$ and $f$ are idempotent.
+\end{itemize}
+For every $u, v\in\Sigma^*$ such that $\mu(u)=e$ and $\mu(v)=f$ we have that:
+\begin{itemize}
+\item $\mu(w_1vw_2)=x\cdot e$, 
+\item $\mu(w_2uw_3)=f\cdot t$.
+\end{itemize}
+\end{lemma}
+
+\begin{pr}
+We have that $\mu(w_1v)=z\cdot f\cdot f=z\cdot f=\mu(w_1)$.
+Thus $\mu(w_1vw_2)=\mu(w_1v)\cdot \mu(w_2)=\mu(w_1)\cdot \mu(w_2)=\mu(w_1\cdot w_2) =x\cdot e$.
+We proceed in the same way for the other equality.
+\end{pr}

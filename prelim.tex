@@ -1,0 +1,80 @@
+\subsection{Polyrational functions}
+\begin{definition}[$1$-pebble transducer]
+A 1-pebble transducer consists of:
+\begin{itemize}
+\item finite input and output alphabets $\Sigma$ and $\Gamma$;
+\item a finite set of states $Q=Q_l\oplus Q_r$ with a distinguished initial and final states;
+\item a transition function:
+$$ \delta: Q\times \Sigma \to Q\times\Gamma$$
+\end{itemize}
+\end{definition}
+
+If $\Sigma$ is a finite set and $i>1$, we denote by $\Sigma^{i}$ the set of symbols $\{a^P| P\subseteq [1,n], a\in \Sigma\}$. By convention we set $a^\emptyset=a$ and $\Sigma^0=\Sigma$.  
+
+\begin{definition}[$k$-pebble transducer]
+A $k$-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a tuple $T=(T_0,\dots,T_{k-1})$ such that for every $i\leq n$:
+\begin{itemize}
+\item  $T_i$ is 1-pebble transducer;
+\item  The input alphabet of $T_i$ is $\Sigma^i$;
+\item  The output alphabet of $T_i$ is $\Gamma\cup\bigcup_{j\geq i} Q_j$, $Q_j$ being the set of states of $T_j$.
+\end{itemize} 
+Terminology: the states of a $T$ are the states of $T_0$. 
+\end{definition}
+
+\begin{remark}
+If $(T_i)_{0 \leq i\leq k}$ is a $k+1$-pebble transducer of input $\Sigma$ and output $\Gamma$, then $(T_i)_{1\leq i\leq k}$ is a $k$-pebble transducer of input $\Sigma^1$ and output $\Gamma$.
+\end{remark}
+
+\subsection{Semantics}
+
+\begin{definition}[Transition monoid of a 1-pebble transducer]
+The transition monoid of a 1-pebble automaton $T=(\Sigma,\Gamma,Q, \delta)$ is defined a follows:
+\begin{itemize}
+\item its elemets are functions of the form $f:Q\to Q\times\Gamma^*$;
+\item the composition $\cdot$ is defined as follows:
+
+If $f(q_0)=(q_1,w_1)$  and $g(q_1)=(q_2, w_2)$ then 
+$g\cdot f(q_0) =(q_2, w_1w_2)$.
+\end{itemize} 
+We define the morphism $\mu:\Sigma^*\to M$ as follows:
+
+$\mu(a)(q)=\delta(a,q)$
+\end{definition}
+
+
+\begin{definition}
+Let $w\in (\Sigma\times \mathbb{N})^*$, and $n\in \mathbb{N}$.
+ We set $w^{\uparrow n}$ to be the word obtained from $w$ by replacing every letter $(a,i)\in \Sigma\times \mathbb{N}$ by $(a,i+n)$. We say that we shift $w$ by $n$. 
+
+If $w\in (\Sigma\times \mathbb{N})^*$, we write $\overline{w}$ for the word over $\Sigma$ obtained from $w$ by erasing the second component.
+
+Let $w\in \Sigma^n$. We set $w[i\leftarrow k]$ for the word obtained from $w$ by replacing the $i^{th}$ letter $a^\mathcal{E}$ by $a^{\mathcal{E} \cup\{k\}}$.
+\end{definition}
+
+\begin{definition}[Transition monoid of a 1-pebble transducer, bis]
+The transition monoid of a 1-pebble automaton $T=(\Sigma,\Gamma,Q, \delta)$ is defined a follows:
+\begin{itemize}
+\item its elemets are pairs of the form $(n\in\mathbb{N}, f:Q\to Q\times(\Gamma\times\mathbb{N})^*)$;
+\item the composition $\cdot$ is defined as follows:
+
+If $m_1=(n_1,f_1)$  and $m_2=(n_2, f_2)$ then  $m_1\cdot m_2=(n_1+n_2, f)$ where $f$ is defined by:
+For all $q_0\in Q$, if $f_1(q_0)=(q_1, w_1)$ and $f_2(q_1)=(q_2, w_2)$, then $f(q_0)=(q_2, w_1w_2^{\uparrow n_1})$.
+\end{itemize} 
+We define the morphism $\mu:\Sigma^*\to M$ as follows:
+
+$\mu(a)=(1, q\to (p, (b,0)))$, where $\delta(a,q)=(p, b)$
+\end{definition}
+
+\begin{definition}[Function realized by a $k$-pebble transducer]
+Let $T=(T_0,\dots,T_k)$ be a $k+1$-pebble automaton of input alphabet $\Sigma$ and output alphabet $\Gamma$. We define the semantics $T_q:\Sigma^*\to \Gamma^*$ of $T$ in the stae $Q$ by induction of $k$ as follows:
+
+Let $\mu$ be the morphism associated to $T_0$.
+We set $T_q(w)=\overline{f(q)[(r,i)/U(w[i\leftarrow 1])]}$, where $\mu(q)=(n,f)$ and $U$ is the $k$-pebble automaton $(T_1,\dots, T_k)$. 
+
+\todo{Ici, mettre $w[i\leftarrow 1]$ est ok a l'etage 1, mais ca ne passe pas a l'induction: il faudrait avoir $w[i\leftarrow j]$ a l'étage j.}
+ \end{definition}
+
+
+\begin{proposition}[\cite{}]
+The function realized by a $k$-pebble transducer is $\mathcal{O}(n^k)$.
+\end{proposition}
