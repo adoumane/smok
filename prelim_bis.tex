@@ -1,0 +1,78 @@
+\subsection{Polyrational functions}
+\begin{definition}[$1$-pebble transducer]
+A 1-pebble transducer consists of a tuple $T=\tuple{\Sigma,\Gamma,Q, q_I,q_F,\delta}$ with:
+\begin{itemize}
+\item finite input and output alphabets $\Sigma$ and $\Gamma$;
+\item a finite set of states $Q=Q$ with a distinguished initial state $q_I$ and final state $q_F$;
+\item a transition function:
+$$ \delta: Q\times \Sigend \to Q\times\set{-1,+1}\times\Gamma^*$$
+\end{itemize}
+\end{definition}
+
+Let $r=(p_0,a_0,q_0,d_0,v_0)\cdots (p_m,a_m,q_m,d_m,v_m)$ be a sequence over $Q\times \Sigend\times Q\times \set{-1,+1}\times \Gamma^*$ and for $i\in \set{0,\ldots,m}$ let  $l_i=\sum_{j< i }d_j$.
+Let $w=b_0\cdots b_n\in \Sigend^{n+1}$ and let $s\in \set{0,\ldots, n}$. We say that $r$ is \emph{a run over $w$ from $s$} if for all $i\in \set{0,\ldots,m}$:
+
+\begin{itemize}
+\item $\delta(p_i,a_i)=(q_i,d_i,v_i)$
+\item $s+l_i\in \set{0,\ldots, n}$
+\item $a_i=w(s+l_i)$
+\end{itemize}
+
+The run is called \emph{left-to-right} (resp. left-to-left) if $s=0$ and $l_m+d_m=n+1$ (resp. $l_m+d_m=-1$). Similarly it is called \emph{right-to-left} (resp. right-to-right) if $s=n$ and $l_m+d_m=-1$ (resp. $l_m+d_m=n+1$).
+Such a run $r$ \emph{accepting} if it is left-to-right, $p_0=q_I$ and $q_m=q_F$.
+The language of words $w\in \Sigma^*$ such that $T$ has an accepting run over $\vdash w\dashv$ is called the \emph{domain} of $T$ and is denoted by $\Dom(T)$. Let $w\in \Dom(T)$, and let $r$ be the accepting run of $T$ over $w$. Let $v=\pi_\Gamma(r)$ where $\pi_\Gamma$ is the natural projection $(Q\times \Sigend \times Q\times \set{-1,+1}\times \Gamma^*)^* \rightarrow \Gamma^*$.
+Then, abusing notations we write $T(w)=v$.
+
+If $\Sigma$ is a finite set and $i>0$. We denote by $\Sigma_i$ the set $\Sigma\cup \Sigma\times {\set{i}}$.
+Let $i_1,\ldots,i_j$ be pairwise distinct integers. We denote the set $(\ldots((\Sigma_{i_1})_{i_2})\ldots)_{i_j}$ by $\Sigma_{i_1,\ldots,i_j}$ which we identify with $\Sigma\times \mathbf 2^{\set{i_1,\ldots,i_j}}$.
+Let $w\in \Sigma_{i_1,\ldots,i_j}^*$, let $l\in \set{0,\ldots,|w|-1}$ and let $i\notin \set{i_1,\ldots,i_j}$.
+We denote by $w[l\add i]$ the word obtained from $w$ by adding $i$ to the second component of the $l$th letter of $w$.
+
+\begin{definition}[$k$-pebble transducer]
+A $k$-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a tuple $\Tt=(T_k,\dots,T_{1})$ such that for every $i\leq n$:
+\begin{itemize}
+\item  $T_i$ is 1-pebble transducer;
+\item  The input alphabet of $T_i$ is $\Sigma_{k,\ldots,i+1}$ ($\Sigma$ for $i=k$;
+\item  The output alphabet of $T_i$ is $\Gamma\cup\bigcup_{j<i} Q_j$, $Q_j$ being the set of states of $T_j$.
+\end{itemize} 
+Terminology: the states of a $\Tt$ are the states of $T_0$. 
+\end{definition}
+
+Let us define inductively the semantics of a $k+1$ pebble transducer $\tuple{T_{k+1},\ldots, T_1}$.
+Let $\Tt_k:\Sigma_k^*\rightarrow \Gamma^*$ be the transduction realized by$\tuple{T_{k},\ldots, T_1}$.
+Let $w$ be a word of $\Sigma^*$, let $r=(p_0,a_0,q_0,d_0,v_0)\cdots (p_m,a_m,q_m,d_m,v_m)$ be the accepting run of $T_k$ over $w$ and for  $i\in \set{0,\ldots,m}$ let  $l_i=\sum_{j< i }d_j$.
+For  $i\in \set{0,\ldots,m}$, let $w_i=w[l_i\add k+1]$ and let $u_i=v_i[q\leftarrow \Tt_k(w_i)]$ for all $q\in \bigcup_{j\in \set{1,\ldots,k}}Q_j$.
+We define $\Tt(w):=u_0\cdots u_m$.
+
+\begin{remark}
+If $(T_i)_{0 \leq i\leq k}$ is a $k+1$-pebble transducer of input $\Sigma$ and output $\Gamma$, then $(T_i)_{1\leq i\leq k}$ is a $k$-pebble transducer of input $\Sigma^1$ and output $\Gamma$.
+\end{remark}
+
+\subsection{Semantics}
+
+\begin{definition}[Transition monoid of a 1-pebble transducer]
+The transition monoid of a 1-pebble automaton $T=(\Sigma,\Gamma,Q, \delta)$ is defined a follows:
+\begin{itemize}
+\item its elements are functions of the form $f:Q\times\set{{-},{+}}\to Q\times\set{{-},{+}}\times \Gamma^*$;
+\item the composition $\cdot$ is defined as follows:
+
+Let $(q_0,d_0)\in Q\times \set{{-},{+}}$, let $i\geq 0$:
+\begin{itemize}
+\item if $i$ is even and $d_i={-}$ or $i$ is odd and $d_i={+}$, then $(q_{i+1},d_{i+1},w_{i+1})$ is undefined
+\item if $i$ is even and $d_i={+}$ then $(q_{i+1},d_{i+1},w_{i+1})=g(q_i,d_i,w_i)$
+\item if $i$ is odd and $d_i={-}$ then $(q_{i+1},d_{i+1},w_{i+1})=f(q_i,d_i,w_i)$
+\end{itemize}
+That way we define a maximal sequence $(q_,d_1,w_1),\ldots,(q_i,d_i,w_i)$.
+Then we define $f\cdot g(q_0,d_0):=(q_i,d_i,w_1\cdots w_i)$.
+
+\end{itemize}
+
+We define the morphism $\mu:\Sigma^*\to M$ as follows:
+
+$\mu(a)(q,d)=\delta(a,q)$
+\end{definition}
+
+
+\begin{proposition}[\cite{}]
+The function realized by a $k$-pebble transducer is $\mathcal{O}(n^k)$.
+\end{proposition}
