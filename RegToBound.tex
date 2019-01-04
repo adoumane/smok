@@ -17,3 +17,18 @@ We have that $\mu(w_1v)=z\cdot f\cdot f=z\cdot f=\mu(w_1)$.
 Thus $\mu(w_1vw_2)=\mu(w_1v)\cdot \mu(w_2)=\mu(w_1)\cdot \mu(w_2)=\mu(w_1\cdot w_2) =x\cdot e$.
 We proceed in the same way for the other equality.
 \end{pr}
+
+\begin{definition}[Producing loop]
+Let $T$ be a 1-pebble transducer, let $\mu_1:\Sigend^*\rightarrow M_1$ be its transition morphism.
+Let $w_1,w_2, w_3$ be words in $\Sigma^*$ and let $(q_1,d_1,v_1)\ldots (q_n,d_n,v_n)$ be the transition sequence from $(q_I,{-})$ for $\mu_1({\vdash} w_1)$ and $\mu_1(w_3{\dashv})$ in $M_1$.
+The triple $(w_1,w_2,w_3)$ is called a \emph{producing loop} if all the following conditions are satisfied:
+\begin{itemize}
+\item $q_n=q_F$ and $d_n={+}$, i.e.~$w_1w_2\in \Dom(T)$
+\item $\exists x,e,y\in M_1$ such that $e^2=e$ and $\mu_1({\vdash} w_1)=xe$, $\mu_1(w_2)=e$ and $\mu_1(w_3{\dashv})=ey$
+\item $\exists\ 0<i<n$ such that $e(q_i,\bar{d_i})=(q_i,d_i,1)$ (where $\bar{d_i}$ is different from $d_i$).
+\end{itemize}
+\end{definition}
+
+\begin{theorem}
+A 1-pebble transducer is constant if and only if it has no producing loop.
+\end{theorem}

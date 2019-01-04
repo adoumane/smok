@@ -66,7 +66,7 @@ $\mu(a)=(1, q\to (p, (b,0)))$, where $\delta(a,q)=(p, b)$
 \end{definition}
 
 \begin{definition}[Function realized by a $k$-pebble transducer]
-Let $T=(T_0,\dots,T_k)$ be a $k+1$-pebble automaton of input alphabet $\Sigma$ and output alphabet $\Gamma$. We define the semantics $T_q:\Sigma^*\to \Gamma^*$ of $T$ in the stae $Q$ by induction of $k$ as follows:
+Let $T=\tuple{T_0,\dots,T_k}$ be a $k+1$-pebble automaton of input alphabet $\Sigma$ and output alphabet $\Gamma$. We define the semantics $T_q:\Sigma^*\to \Gamma^*$ of $T$ in the stae $Q$ by induction of $k$ as follows:
 
 Let $\mu$ be the morphism associated to $T_0$.
 We set $T_q(w)=\overline{f(q)[(r,i)/U(w[i\leftarrow 1])]}$, where $\mu(q)=(n,f)$ and $U$ is the $k$-pebble automaton $(T_1,\dots, T_k)$. 

@@ -1,0 +1,9 @@
+\begin{lemma}
+Let $\Tt=\tuple{T_k,\ldots,T_1}$ be a $k$-pebble transducer over input alphabet $\Sigma$.
+One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over $\Sigma'=\Sigma\times L $ such that:
+\begin{itemize}
+\item for any $w\in \Sigma'^*$, $\Tt'(w)=\Tt\circ\pi_{\Sigma}(w)$
+\item For any $\bigcup_{j<k} Q_j'$-producing triple $(w_1,w_2,w_3)$, we have $\Tt'(w_1w_2^kw_3)=\Theta(|w_2|^k)$
+\end{itemize}
+
+\end{lemma}

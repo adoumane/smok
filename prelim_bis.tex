@@ -1,6 +1,6 @@
 \subsection{Polyrational functions}
 \begin{definition}[$1$-pebble transducer]
-A 1-pebble transducer consists of a tuple $T=\tuple{\Sigma,\Gamma,Q, q_I,q_F,\delta}$ with:
+A 1-pebble transducer consists of a tuple $T=(\Sigma,\Gamma,Q, q_I,q_F,\delta)$ with:
 \begin{itemize}
 \item finite input and output alphabets $\Sigma$ and $\Gamma$;
 \item a finite set of states $Q=Q$ with a distinguished initial state $q_I$ and final state $q_F$;
@@ -48,7 +48,7 @@ We define $\Tt(w):=u_0\cdots u_m$.
 If $(T_i)_{0 \leq i\leq k}$ is a $k+1$-pebble transducer of input $\Sigma$ and output $\Gamma$, then $(T_i)_{1\leq i\leq k}$ is a $k$-pebble transducer of input $\Sigma^1$ and output $\Gamma$.
 \end{remark}
 
-\subsection{Semantics}
+\subsection{Transition monoids}
 
 \begin{definition}[Transition monoid of a 1-pebble transducer]
 The transition monoid of a 1-pebble automaton $T=(\Sigma,\Gamma,Q, \delta)$ is defined a follows:
@@ -63,6 +63,7 @@ Let $(q_0,d_0)\in Q\times \set{{-},{+}}$, let $i\geq 0$:
 \item if $i$ is odd and $d_i={-}$ then $(q_{i+1},d_{i+1},w_{i+1})=f(q_i,d_i,w_i)$
 \end{itemize}
 That way we define a maximal sequence $(q_,d_1,w_1),\ldots,(q_i,d_i,w_i)$.
+This sequence we call the \emph{transition sequence} obtained from $(q_0,d_0)$, $f$ and $g$ in $M$.
 Then we define $f\cdot g(q_0,d_0):=(q_i,d_i,w_1\cdots w_i)$.
 
 \end{itemize}
@@ -70,6 +71,11 @@ Then we define $f\cdot g(q_0,d_0):=(q_i,d_i,w_1\cdots w_i)$.
 We define the morphism $\mu:\Sigma^*\to M$ as follows:
 
 $\mu(a)(q,d)=\delta(a,q)$
+
+We also define the morphism $\mu_1:\Sigma^*\to M_1$ where we project elements of $\Gamma^*$ to elements of $\set{0,1}$ with operation $0+0=0$, $0+1=1+0=1+1=1$. Thus elements of $M_1$ are of the type $Q\times\set{{-},{+}}\to Q\times\set{{-},{+}}\times \set{0,1}$.
+Finally, we define $\mu_0:\Sigma^*\to M_0$ similarly just by deleting the $\Gamma^*$ component.
+Thus elements of $M_1$ are of the type $Q\times\set{{-},{+}}\to Q\times\set{{-},{+}}$.
+Just as before, we define transition sequences in $M_1$ and $M_0$.
 \end{definition}
 
 
