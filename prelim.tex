@@ -102,43 +102,50 @@ The function realized by a $k$-pebble transducer is $\mathcal{O}(n^k)$ in the le
 \end{proposition}
 
 \subsection{Transition monoids}
-
-Besoin d'outils pour resumer le comportement d'un one pebble transducteur.
-Cette infomation sera un element de ce qu'on appellera le moinoid de transition. A chaque mot $w$, on associera un element de ce monoid qui nous dira: si j'entre dans le mot $w$ (par la droite ou par la gauche) en étant dans un certain atat $q$, alors je vais sortir du mot par la droite ou la  la gauche avec un certain etat. Suivant le besoin, on aura besoin d'enristrer en plus des information sur l'output. Soit le mot emis en entier (c'est le monoid $M_\omega$), ou alors une information binaire qui dit si oui ou non j'ai émis un mot (c'est le monoid $M_2$) ou alors pas du tout d'information sur l'output (c'est le monoid $M_0$).
+We present in this section a tool used to summarize the behaviour of one-pebble automata, and called transition monoids. A chaque mot $w$, on associera un element de ce monoid qui nous dira: si j'entre dans le mot $w$ (par la droite ou par la gauche) en etant dans un certain atat $q$, alors je vais sortir du mot par la droite ou la  la gauche avec un certain etat. Suivant le besoin, on aura besoin d'enregistrer en plus des information sur l'output. Soit le mot emis en entier (c'est le monoid $M_{\Gamma^*}$), ou alors une information binaire qui dit si oui ou non j'ai emis un mot (c'est le monoid $M_{\mathbf{2}}$) ou alors pas du tout d'information sur l'output (c'est le monoid $M_{\mathbf{0}}$).
 
    
 \begin{definition}%[Transition monoid of a 1-pebble transducer]
 Let $T$ be a 1-pebble automaton with set of states $Q$. Let $\Delta$ be a monoid, and let $\star$ be its multiplication.
 
-We define the transition monoind $M(\Delta)$ of $T$ as follows:
+We define the transition monoind $M_\Delta$ of $T$ as follows:
 \begin{itemize}
-\item its elements are functions of the form $f:Q\times\set{\rightarrow,\leftarrow}\to Q\times\set{\rightarrow,\leftarrow}\times \Delta^*$;
-\item the composition $\cdot$ is defined as follows:
-
-Let $(q_0,d_0)\in Q\times \set{{-},{+}}$, let $i\geq 0$:
+\item its elements are functions of the form $f:Q\times\set{\rightarrow,\leftarrow}\to Q\times\set{\rightarrow,\leftarrow}\times \Delta$;
+\item the composition $\cdot$ is defined as follows. Let $f, g$ be two elements of $M(\Delta)$, $q\in Q$ and $d\in\set{\rightarrow, \leftarrow}$. We define the \emph{transition sequence} between 
+$f$ and $g$ starting from $(q,d)$ and its \emph{output sequence} to be respectively the sequences $(q_i,d_i)_{i\in[0,n]}$ and  $(w_i)_{i\in[1,n]}$ satisfying the following conditions: 
 \begin{itemize}
-\item if $i$ is even and $d_i={-}$ or $i$ is odd and $d_i={+}$, then $(q_{i+1},d_{i+1},w_{i+1})$ is undefined
-\item if $i$ is even and $d_i={+}$ then $(q_{i+1},d_{i+1},w_{i+1})=g(q_i,d_i,w_i)$
-\item if $i$ is odd and $d_i={-}$ then $(q_{i+1},d_{i+1},w_{i+1})=f(q_i,d_i,w_i)$
+\item $(q_0,d_0)=(q,d)$;
+\item $d_0=d_1$, $d_{n-1}=d_{n}$ and $d_i\neq d_{i+1}$ for every $i\in[1,n-2]$;
+\item if $d_0=\rightarrow$ then for every even $i$, $f(q_i,d_i)=(q_{i+1},d_{i+1}, w_{i+1})$ and for every odd $i$, $g(q_i,d_i)=(q_{i+1},d_{i+1}, w_{i+1})$;
+\item if $d_0=\rightarrow$ then for every even $i$, $g(q_i,d_i)=(q_{i+1},d_{i+1}, w_{i+1})$ and for every odd $i$, $f(q_i,d_i)=(q_{i+1},d_{i+1}, w_{i+1})$. 
 \end{itemize}
-That way we define a maximal sequence $(q_,d_1,w_1),\ldots,(q_i,d_i,w_i)$.
-This sequence we call the \emph{transition sequence} obtained from $(q_0,d_0)$, $f$ and $g$ in $M$.
-Then we define $f\cdot g(q_0,d_0):=(q_i,d_i,w_1\cdots w_i)$.
+We set $(f\cdot g) (q,d)$ to be $(q_n, d_n, w_0\star\dots\star w_n)$.
 \end{itemize}
 \end{definition}
+We will mainly instanciate $M_\Delta$ in the following three cases: 
+\begin{enumerate}
+\item $\Delta$ is the monoid $\Gamma^*$ of words over $\Gamma$.
+\item $\Delta$ is the boolean monoid $\mathbf 2$.
+\item $\Delta$ is the singleton monoid $\mathbf 0$.
+\end{enumerate}
+In the last case, the third component of the codomain of the elements of $M_{\mathbf 1}$ is useless, one can be see them as functions of type $Q\times\set{\rightarrow,\leftarrow}\to Q\times\set{\rightarrow,\leftarrow}$.
 
 \begin{example}
 \begin{center}
 Show two boxes and their composition.
+
+Give an example of transition sequence.
 \end{center}
 \end{example}
+
+Let us show how to interpret words as elements of the monoid 
 \begin{definition}
-We define the morphism $\mu:\Sigma^*\to M$ as follows:
+Let $T=(\Sigma, \Gamma, Q, q_I, q_F, \delta)$ be a 1-pebble transducer. 
+We define the morphism $\mu:\Sigma^*\to M_{\Gamma^*}$ as follows:
+$$\text{For every } d\in \set{\rightarrow,\leftarrow}\qquad\mu(a)(q,d)=\delta(a,q)$$
+et $\Delta\subseteq \Gamma$. We define the morphism $\mu_\Delta:\Sigma^*\to M_{\mathbf 2}$ as follows. Let $1_\Delta:\Gamma^*\to \mathbf{2}$ be the morphisme defined on letters as follows $1_\Delta(a)=1$ if $a\in \Delta$ and $1_\Delta(a)=0$ otherwise. We set then for every $d\in\set{\rightarrow,\leftarrow}$: 
+$$\text{If } \delta(a,q)=(q',d',w) \text{ then } \mu(a)(q,d)=(q',d',1_\Delta(w))$$
+We define the morphism $\mu_{\mathbf{0}}:\Sigma^*\to M_{\mathbf 0}$ as follows. For every $d\in\set{\rightarrow,\leftarrow}$,
+$$\text{if } \delta(a,q)=(q',d',w) \text{ then }  \mu(a)(q,d)=(q',d') $$
+\end{definition} 
 
-$\mu(a)(q,d)=\delta(a,q)$
-
-We also define the morphism $\mu_1:\Sigma^*\to M_1$ where we project elements of $\Gamma^*$ to elements of $\set{0,1}$ with operation $0+0=0$, $0+1=1+0=1+1=1$. Thus elements of $M_1$ are of the type $Q\times\set{{-},{+}}\to Q\times\set{{-},{+}}\times \set{0,1}$.
-Finally, we define $\mu_0:\Sigma^*\to M_0$ similarly just by deleting the $\Gamma^*$ component.
-Thus elements of $M_1$ are of the type $Q\times\set{{-},{+}}\to Q\times\set{{-},{+}}$.
-Just as before, we define transition sequences in $M_1$ and $M_0$.
-\end{definition}
