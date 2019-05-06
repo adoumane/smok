@@ -1,11 +1,11 @@
 \subsection{Polyrational functions}
 
 \subsubsection{One pebble transducers}
-A one pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a two way automaton (meaning that it has a reading head, called here a pebble, which can scann the word on both directions) which reads words over $\Sigma^*$, and which has the ability to output words over $\Gamma^*$ on every transition. A configuration looks like this:
+A one pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a two way automaton (meaning that it has a reading head, called here a pebble, which can scan the word on both directions) which reads words over $\Sigma^*$, and which has the ability to output words over $\Gamma^*$ on every transition. A configuration looks like this:
 \begin{center}
 Picture
 \end{center} 
-The output of a one pebble transducer is the concatenation of the outputs of the transitions it tooks, in the chrnological order of their emission.
+The output of a one pebble transducer is the concatenation of the outputs of the transitions it took, in the chronological order of their emission.
 
 \begin{definition}\label{def:1pebble}
 A 1-pebble transducer is a tuple $(\Sigma,\Gamma, Q, q_I, q_F, \delta)$, which consists of:
@@ -21,7 +21,7 @@ We assume that the transducer can only move to the right when it is on the left 
  \end{definition}
 
 
-Let us define the beahivous of the transducer over an input word $w\in\Sigma^*$. The transducer reads the word $\vdash\!w\!\dashv$ which we denote by  $w_{\vdash\dashv}$. \emph{A configuration} is a pair $(q,i)$ where $q$ is the control state and $i$ the position of the pebble on $w_{\vdash\dashv}$. 
+Let us define the behavior of the transducer over an input word $w\in\Sigma^*$. The transducer reads the word $\vdash\!w\!\dashv$ which we denote by  $w_{\vdash\dashv}$. \emph{A configuration} is a pair $(q,i)$ where $q$ is the control state and $i$ the position of the pebble on $w_{\vdash\dashv}$. 
 
 Let $(p,i)$ be a configuration and suppose that $\delta(p, w_{\vdash\dashv}[i])=(q,d,o)$. \emph{The successor of $(p,i)$} is the configuration $(q,j)$
 where:
@@ -40,8 +40,8 @@ state, and no other configurations have an accepting state. The accepting run, i
 
 \subsubsection{$k$-pebble transducers}
 
-In the litterature~\cite{}, a $k$-pebble transducer is a transducer with $k$ reading heads. The movement of thease heads is subject to a stack discipline: only the pebble on top of the stack can move. Add details, an a precise definition of this version of $k$-pebble automata. 
-In this paper, we will work witha different yet equivalent definition of $k$-pebble automata. Here a $k$-pebble transducer is a collection of $k$ one pebble automata. Add an informal definition.
+In the literature~\cite{}, a $k$-pebble transducer is a transducer with $k$ reading heads. The movement of these heads is subject to a stack discipline: only the pebble on top of the stack can move. Add details, and a precise definition of this version of $k$-pebble automata. 
+In this paper, we will work with a different yet equivalent definition of $k$-pebble automata. Here a $k$-pebble transducer is a collection of $k$ one pebble automata. Add an informal definition.
 \begin{center}
 Picture
 \end{center}
