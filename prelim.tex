@@ -45,10 +45,12 @@ In this paper, we will work with a different yet equivalent definition of $k$-pe
 \begin{center}
 Picture
 \end{center}
-Let $k, i\in \mathbb{N}$. We set $\Sigma_{[i,k]}=\Sigma\cup\Sigma\times \mathbf 2^{[i,k]}$.  
-In the alphabet $\Sigma_{[k, i+1]}$, we have the possibility to mark some letters of $\Sigma$ by the information of wich pebbles are under head. 
+Let $S$ be a finite set, we define $\Sigma(S)=\Sigma\times \mathbf 2^S$, and we identify $\Sigma(\varnothing)$ with $\Sigma$.
+Let $k, i\in \mathbb{N}$.
+%We set $\Sigma_{[i,k]}=\Sigma\cup\Sigma\times \mathbf 2^{[i,k]}$.  
+%In the alphabet $\Sigma_{[k, i+1]}$, we have the possibility to mark some letters of $\Sigma$ by the information of wich pebbles are under head. 
 
- 
+\begin{comment}
 \begin{definition}%[$k$-pebble transducer]
 A $k$-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a tuple $\Tt=(T_k,\dots,T_{1})$ such that for every $i\leq n$:
 \begin{itemize}
@@ -58,11 +60,21 @@ A $k$-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ 
 \end{itemize} 
 In particular, the input alphabet of $T_k$ is $\Sigma$ and the output alphabet of $T_1$ is $\Gamma$. We denote by $\Tt_i$ the transducer $T_i$. 
 \end{definition}
+\end{comment}
 
-The alphabet $(\Gamma_{[l,m]})_{[m+1,n]}$ can be seen as the alphabet $\Gamma_{[l,n]}$. Indeed, every letter of $(\Gamma_{[l,m]})_{[m+1,n]}$ of the form $((a,e),f)$ where $e\subseteq [l,m]$ and 
-$f\subseteq [m+1,n]$ can be seen a a letter $(a,e\cup f)$ of $\Gamma_{[l,n]}$ and conversely.
+\begin{definition}%[$k$-pebble transducer]
+  A $k$-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a tuple $\Tt=(T_1,\dots,T_{k})$ such that for every $i\leq n$:
+  \begin{itemize}
+  \item  $T_i$ is 1-pebble transducer, whose set of states is $Q_i$;
+  \item  The input alphabet of $T_i$ is $\Sigma(\cup_{j>i}Q_j)$;
+  \item  The output alphabet of $T_i$ is $\Gamma \cup [1,i-1]$.
+  \end{itemize} 
+  In particular, the input alphabet of $T_k$ is $\Sigma$ and the output alphabet of $T_1$ is $\Gamma$. We denote by $\Tt_i$ the transducer $T_i$. 
+  \end{definition}
 
-With this in mind, for every $k$-pebble transducer $\Tt=(T_j)_{j\in[1,k]}$ and $i\in[1,k]$,  the sequence $(T_j)_{j\in[1,i]}$ can be seen as an $i$-pebble transducer, of input alphabet $\Gamma_{[i+1,k]}$ and output alphabet $\Gamma$. Similarly, the sequence   $(T_j)_{j\in[i+1,k]}$ can be seen as a $(k-i)$-pebble transducer, of input alphabet $\Gamma$ and output alphabet $\Sigma\cup\bigcup_{j\in[1,i]} Q_j$. We denote them respectively by $\Tt[1,i]$ and $\Tt[i+1,k]$. 
+%The alphabet $(\Gamma_{[l,m]})_{[m+1,n]}$ can be seen as the alphabet $\Gamma_{[l,n]}$. Indeed, every letter of $(\Gamma_{[l,m]})_{[m+1,n]}$ of the form $((a,e),f)$ where $e\subseteq [l,m]$ and  $f\subseteq [m+1,n]$ can be seen a a letter $(a,e\cup f)$ of $\Gamma_{[l,n]}$ and conversely.
+
+For every $k$-pebble transducer $\Tt=(T_j)_{j\in[1,k]}$ and $i\in[1,k]$,  the sequence $(T_j)_{j\in[1,i]}$ can be seen as an $i$-pebble transducer, of input alphabet $\Sigma(\cup_{j>i}Q_j)$ and output alphabet $\Gamma$. Similarly, the sequence   $(T_j)_{j\in[i+1,k]}$ can be seen as a $(k-i)$-pebble transducer, of input alphabet $\Sigma$ and output alphabet $\Gamma \cup [1,i]$. We denote them respectively by $\Tt[1,i]$ and $\Tt[i+1,k]$.
  
  \medskip
 \begin{terminology} 
@@ -74,7 +86,7 @@ With this in mind, for every $k$-pebble transducer $\Tt=(T_j)_{j\in[1,k]}$ and $
  Let us define the function realized by a $k$-pebble transducer. 
   
   \begin{definition}
-We define, by induction on $k$ the function, realized by a $k$-pebble automation. The case $k=1$ has been treated in Definition~\ref{def:1pebble}. 
+We define, by induction on $k$ the function, realized by a $k$-pebble automaton. The case $k=1$ has been treated in Definition~\ref{def:1pebble}. 
 
 Consider a $k+1$ pebble transducer $\Tt$. We set $Q_i$ to be the set of states of $\Tt_i$.
 Let us define the image of a word $w$ of $\Sigma^*$ by the transduction realized by $\Tt$.

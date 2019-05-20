@@ -115,6 +115,8 @@ INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/comment/comment.sty
 INPUT /Users/nathan/Documents/postdoc wrszw/smok/main.aux
 INPUT /Users/nathan/Documents/postdoc wrszw/smok/main.aux
 OUTPUT /Users/nathan/Documents/postdoc wrszw/smok/main.aux

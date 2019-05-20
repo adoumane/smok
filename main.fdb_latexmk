@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex main"] 1554283594 "main.aux" "main.bbl" "main" 1555495124
+["bibtex main"] 1558364203 "main.aux" "main.bbl" "main" 1558364204
   "/usr/local/texlive/2016/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "bib.bib" 1554283557 1015 9f8c9d667bbe3f4a816de6365b51e73e ""
-  "main.aux" 1555059741 922 6368df5826145b402fa244850cebef9f ""
+  "main.aux" 1558364203 922 21afd3d45fbafa5f179ba7a2b3bcb15d ""
   "main.bcf" 0 -1 0 ""
   (generated)
   "main.blg"
   "main.bbl"
-["pdflatex"] 1555059741 "/Users/nathan/Documents/postdoc wrszw/smok/main.tex" "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf" "main" 1555495124
-  "/Users/nathan/Documents/postdoc wrszw/smok/main.aux" 1555059741 922 6368df5826145b402fa244850cebef9f ""
-  "/Users/nathan/Documents/postdoc wrszw/smok/main.tex" 1555495120 683 d482e648d359e61444952a2aeff46529 ""
+["pdflatex"] 1558364203 "/Users/nathan/Documents/postdoc wrszw/smok/main.tex" "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf" "main" 1558364204
+  "/Users/nathan/Documents/postdoc wrszw/smok/main.aux" 1558364203 922 21afd3d45fbafa5f179ba7a2b3bcb15d ""
+  "/Users/nathan/Documents/postdoc wrszw/smok/main.tex" 1558356974 704 e6e7a5ac77115e27fab6e183188fc946 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -114,6 +114,7 @@
   "/usr/local/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty" 1454284088 5159 a08c9bbd48fc492f15b22e458bef961f ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd" 1454284088 2256 80ce1168fb4ce6a85583a9cf8972c013 ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/base/size10.clo" 1459635588 8292 e897c12e1e886ce77fe26afc5d470886 ""
+  "/usr/local/texlive/2016/texmf-dist/tex/latex/comment/comment.sty" 1390604416 9666 b0ada4704d4b3d0048a56c49bc982988 ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/ebproof/ebproof.sty" 1427059337 15166 f8d08a2d8d46dcbae63662486afb863e ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg" 1459978653 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1459978653 3103 f32642b1cd56c010cdfb6545539b7f0b ""
@@ -144,13 +145,13 @@
   "RegToBound.tex" 1554283557 1832 6708a538ea005f48579acf1f12aab7d4 ""
   "introduction.tex" 1554283557 465 6f31aab468ec16d000b85b8579fd9b36 ""
   "macros.sty" 1554283557 4921 9c79da17427f006775cc3ef2d85a176e ""
-  "main.aux" 1555059741 922 6368df5826145b402fa244850cebef9f ""
-  "main.bbl" 1554283594 49 0eba253fc001332e731e8aba3f23127b "bibtex main"
-  "main.tex" 1555495120 683 d482e648d359e61444952a2aeff46529 ""
-  "prelim.tex" 1555059741 10130 5658128b6a2d7a5b8d7fdd50eba77015 ""
+  "main.aux" 1558364203 922 21afd3d45fbafa5f179ba7a2b3bcb15d ""
+  "main.bbl" 1558364203 49 0eba253fc001332e731e8aba3f23127b "bibtex main"
+  "main.tex" 1558356974 704 e6e7a5ac77115e27fab6e183188fc946 ""
+  "prelim.tex" 1558364200 10846 8f19382164757b0bb53b0aa757ac8ce7 ""
   (generated)
-  "/Users/nathan/Documents/postdoc wrszw/smok/main.log"
   "main.log"
+  "/Users/nathan/Documents/postdoc wrszw/smok/main.log"
   "main.aux"
   "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf"
   "main.pdf"
