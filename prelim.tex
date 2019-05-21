@@ -45,8 +45,8 @@ In this paper, we will work with a different yet equivalent definition of $k$-pe
 \begin{center}
 Picture
 \end{center}
-Let $S$ be a finite set, we define $\Sigma(S)=\Sigma\times \mathbf 2^S$, and we identify $\Sigma(\varnothing)$ with $\Sigma$.
-Let $k, i\in \mathbb{N}$.
+Let $S$ be a finite set, we define $\Sigma(S)=\Sigma\times \mathbf 2^S$. For $S\cap T=\varnothing$, we identify the sets $(\Sigma(S))(T)$ and $\Sigma(S\cup T)$, as well as the sets $\Sigma(\varnothing)$ and $\Sigma$.
+%Let $k, i\in \mathbb{N}$.
 %We set $\Sigma_{[i,k]}=\Sigma\cup\Sigma\times \mathbf 2^{[i,k]}$.  
 %In the alphabet $\Sigma_{[k, i+1]}$, we have the possibility to mark some letters of $\Sigma$ by the information of wich pebbles are under head. 
 
@@ -65,21 +65,22 @@ In particular, the input alphabet of $T_k$ is $\Sigma$ and the output alphabet o
 \begin{definition}%[$k$-pebble transducer]
   A $k$-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a tuple $\Tt=(T_1,\dots,T_{k})$ such that for every $i\leq n$:
   \begin{itemize}
-  \item  $T_i$ is 1-pebble transducer, whose set of states is $Q_i$;
-  \item  The input alphabet of $T_i$ is $\Sigma(\cup_{j>i}Q_j)$;
+  \item  $T_i$ is a 1-pebble transducer, whose set of states is denoted $Q_i$;
+  \item  The input alphabet of $T_i$ is $\Sigma(Q_{>i})$, with $Q_{>i}=\bigcup_{j\in [i+1,k]}Q_j)$;
   \item  The output alphabet of $T_i$ is $\Gamma \cup [1,i-1]$.
   \end{itemize} 
-  In particular, the input alphabet of $T_k$ is $\Sigma$ and the output alphabet of $T_1$ is $\Gamma$. We denote by $\Tt_i$ the transducer $T_i$. 
+  In particular, the input alphabet of $T_k$ is $\Sigma$ and the output alphabet of $T_1$ is $\Gamma$.%We denote by $\Tt_i$ the transducer $T_i$. 
   \end{definition}
 
 %The alphabet $(\Gamma_{[l,m]})_{[m+1,n]}$ can be seen as the alphabet $\Gamma_{[l,n]}$. Indeed, every letter of $(\Gamma_{[l,m]})_{[m+1,n]}$ of the form $((a,e),f)$ where $e\subseteq [l,m]$ and  $f\subseteq [m+1,n]$ can be seen a a letter $(a,e\cup f)$ of $\Gamma_{[l,n]}$ and conversely.
 
-For every $k$-pebble transducer $\Tt=(T_j)_{j\in[1,k]}$ and $i\in[1,k]$,  the sequence $(T_j)_{j\in[1,i]}$ can be seen as an $i$-pebble transducer, of input alphabet $\Sigma(\cup_{j>i}Q_j)$ and output alphabet $\Gamma$. Similarly, the sequence   $(T_j)_{j\in[i+1,k]}$ can be seen as a $(k-i)$-pebble transducer, of input alphabet $\Sigma$ and output alphabet $\Gamma \cup [1,i]$. We denote them respectively by $\Tt[1,i]$ and $\Tt[i+1,k]$.
+For every $k$-pebble transducer $\Tt=(T_j)_{j\in[1,k]}$ and $i\in[1,k]$,  the sequence $(T_j)_{j\in[1,i]}$ can be seen as an $i$-pebble transducer, of input alphabet $\Sigma(Q_{>i})$ and output alphabet $\Gamma$. We denote this transducer by $\Tt_i$.
+%Similarly, the sequence   $(T_j)_{j\in[i+1,k]}$ can be seen as a $(k-i)$-pebble transducer, of input alphabet $\Sigma$ and output alphabet $\Gamma \cup [1,i]$. We denote them respectively by $\Tt[1,i]$ and $\Tt[i+1,k]$.
  
  \medskip
 \begin{terminology} 
- A $k$-pebble transducer $\Tt$ can be seen as the one pebble transducer $\Tt_k$, which outsources a part of the computation to the other one pebble transducers $\Tt_i$, $i<k$. 
- For this reason, we call \emph{the states of $\Tt$} the states of $\Tt_k$, and \emph{the initial state of $\Tt$} the initial state of $\Tt_k$. 
+ A $k$-pebble transducer $\Tt$ can be seen as the one pebble transducer $T_k$, which outsources a part of the computation to the other one pebble transducers $T_i$, $i<k$. 
+ For this reason, we call \emph{the states of $\Tt$} the states of $T_k$, and \emph{the initial state of $\Tt$} the initial state of $T_k$. 
   \end{terminology}
   
   \smallskip
@@ -91,15 +92,36 @@ We define, by induction on $k$ the function, realized by a $k$-pebble automaton.
 Consider a $k+1$ pebble transducer $\Tt$. We set $Q_i$ to be the set of states of $\Tt_i$.
 Let us define the image of a word $w$ of $\Sigma^*$ by the transduction realized by $\Tt$.
 
-\noindent Let $r=(q_j,\mathsf{pos}_j)_{j\in[1, n]}$ be the accepting run of $\Tt_{k+1}$ over $w$ and $(o_j)_{j\in[1, n]}$ be the outputs of the corresponding configurations.
+\noindent Let $r=(q_j,\mathsf{pos}_j)_{j\in[1, n]}$ be the accepting run of $T_{k+1}$ over $w$ and $(o_j)_{j\in[1, n]}$ be the outputs of the corresponding configurations.
 
-\noindent For every $q\in Q_i$, let $f^i_q:\Sigma_{[k,i+1]}^*\rightarrow \Gamma^*$ be the transduction realized by $\Tt[1,i]$, considering $q$ as its initial state.
+\noindent Let $f_i:\Sigma_{[k,i+1]}^*\rightarrow \Gamma^*$ be the transduction realized by $\Tt[1,i]$,  its initial state.
  
- For every $j\in[1,n]$, let $w_j$ be the word obtained from $w$ by replacing the letter $a$ at position $\mathsf{pos}_j$ by $(a,k+1)$.
-    For every $j\in[1,n]$, let $u_j$ be the word obtained from $o_j$ by replacing every state $q\in Q_i$ by $f^i_q(w_j)$.
+ For every $j\in[1,n]$, let $w_j$ be the word obtained from $w$ by replacing the letter $a$ at position $\mathsf{pos}_j$ by $(a,\set{q_j})$.
+    For every $j\in[1,n]$, let $u_j$ be the word obtained from $o_j$ by replacing each number $i\in [1,k]$ by $f_i(w_j)$.
     
-The image of $w$ by $\Tt$ is the word $(u_j)_{j\in[1,n]}$.
+The image of $w$ by $\Tt$ is the word $u_1\cdots u_n$.
 \end{definition}
+
+\begin{comment}
+
+\begin{definition}
+  We define, by induction on $k$ the function, realized by a $k$-pebble automaton. The case $k=1$ has been treated in Definition~\ref{def:1pebble}. 
+  
+  Consider a $k+1$ pebble transducer $\Tt$. We set $Q_i$ to be the set of states of $\Tt_i$.
+  Let us define the image of a word $w$ of $\Sigma^*$ by the transduction realized by $\Tt$.
+  
+  \noindent Let $r=(q_j,\mathsf{pos}_j)_{j\in[1, n]}$ be the accepting run of $\Tt_{k+1}$ over $w$ and $(o_j)_{j\in[1, n]}$ be the outputs of the corresponding configurations.
+  
+  \noindent For every $q\in Q_i$, let $f^i_q:\Sigma_{[k,i+1]}^*\rightarrow \Gamma^*$ be the transduction realized by $\Tt[1,i]$, considering $q$ as its initial state.
+   
+   For every $j\in[1,n]$, let $w_j$ be the word obtained from $w$ by replacing the letter $a$ at position $\mathsf{pos}_j$ by $(a,k+1)$.
+      For every $j\in[1,n]$, let $u_j$ be the word obtained from $o_j$ by replacing every state $q\in Q_i$ by $f^i_q(w_j)$.
+      
+  The image of $w$ by $\Tt$ is the word $(u_j)_{j\in[1,n]}$.
+  \end{definition}
+
+    
+\end{comment}
 
 \begin{example}
 \begin{center}
