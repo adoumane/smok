@@ -194,13 +194,13 @@ INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 OUTPUT /Users/nathan/Documents/postdoc wrszw/smok/main.pdf
 INPUT /usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
+INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
+INPUT /Users/nathan/Documents/postdoc wrszw/smok/RegToBound.tex
+INPUT /Users/nathan/Documents/postdoc wrszw/smok/RegToBound.tex
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
-INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
-INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
-INPUT /Users/nathan/Documents/postdoc wrszw/smok/RegToBound.tex
-INPUT /Users/nathan/Documents/postdoc wrszw/smok/RegToBound.tex
 INPUT /Users/nathan/Documents/postdoc wrszw/smok/PolyToReg.tex
 INPUT /Users/nathan/Documents/postdoc wrszw/smok/PolyToReg.tex
 INPUT /Users/nathan/Documents/postdoc wrszw/smok/main.bbl

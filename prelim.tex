@@ -23,13 +23,13 @@ We assume that the transducer can only move to the right when it is on the left 
 
 Let us define the behavior of the transducer over an input word $w\in\Sigma^*$. The transducer reads the word $\vdash\!w\!\dashv$ which we denote by  $w_{\vdash\dashv}$. \emph{A configuration} is a pair $(q,i)$ where $q$ is the control state and $i$ the position of the pebble on $w_{\vdash\dashv}$. 
 
-Let $(p,i)$ be a configuration and suppose that $\delta(p, w_{\vdash\dashv}[i])=(q,d,o)$. \emph{The successor of $(p,i)$} is the configuration $(q,j)$
+Let $(p,i)$ be a configuration and suppose that $\delta(p, w_{\vdash\dashv}[i])=(q,d,\gamma)$. \emph{The successor of $(p,i)$} is the configuration $(q,j)$
 where:
 \begin{align*}
  j=i+1 &\qquad \text{ if }\qquad d=\ \rightarrow\\
  j=i-1 &\qquad \text{ if }\qquad d=\ \leftarrow 
 \end{align*}
-\emph{The output of $(p,i)$} is the word $o$. \emph{A run} on $w$ is a sequence of configurations over $w$ related by a the successor relation defined above. The output of a run is the word obtained by concatenating the outputs of its configurations.
+\emph{The output of $(p,i)$} is the word $\gamma$. \emph{A run} on $w$ is a sequence of configurations over $w$ related by a the successor relation defined above. The output of a run is the word obtained by concatenating the outputs of its configurations.
 
 % such that $c_{i+1}$ is the successor of $c_i$. \emph{The output} of a run is the word $(\mathsf{out}(c_i))_{0\leq i\leq n}$. 
 
@@ -41,11 +41,12 @@ state, and no other configurations have an accepting state. The accepting run, i
 \subsubsection{$k$-pebble transducers}
 
 In the literature~\cite{}, a $k$-pebble transducer is a transducer with $k$ reading heads. The movement of these heads is subject to a stack discipline: only the pebble on top of the stack can move. Add details, and a precise definition of this version of $k$-pebble automata. 
-In this paper, we will work with a different yet equivalent definition of $k$-pebble automata. Here a $k$-pebble transducer is a collection of $k$ one pebble automata. Add an informal definition.
+In this paper, we will work with a different yet equivalent definition of $k$-pebble automata. Here a $k$-pebble transducer is a collection of $k$ one-pebble automata. Add an informal definition.
 \begin{center}
 Picture
 \end{center}
-Let $S$ be a finite set, we define the alphabet $\Sigma(S)=\Sigma\times \mathbf 2^S$. For $S\cap T=\varnothing$, we identify the sets $(\Sigma(S))(T)$ and $\Sigma(S\cup T)$, as well as the sets $\Sigma(\varnothing)$ and $\Sigma$.
+Let $\Sigma$ be a finite alphabet and let $S$ be a finite set of \emph{labels}, we define the alphabet of labelled letters $\Sigma(S)=\Sigma\times \mathbf 2^S$. For $S\cap T=\varnothing$, we identify the sets $(\Sigma(S))(T)$ and $\Sigma(S\cup T)$, as well as the sets $\Sigma(\varnothing)$ and $\Sigma$.
+Let $a=(b,T)\in \Sigma(S)$, and let $s\in S$, then we denote by  $a(s)$ the letter $(b,T\cup\set{s})$.
 %Let $k, i\in \mathbb{N}$.
 %We set $\Sigma_{[i,k]}=\Sigma\cup\Sigma\times \mathbf 2^{[i,k]}$.  
 %In the alphabet $\Sigma_{[k, i+1]}$, we have the possibility to mark some letters of $\Sigma$ by the information of wich pebbles are under head. 
@@ -63,10 +64,10 @@ In particular, the input alphabet of $T_k$ is $\Sigma$ and the output alphabet o
 \end{comment}
 
 \begin{definition}%[$k$-pebble transducer]
-  A $k$-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a tuple $\Tt=(T_1,\dots,T_{k})$ such that for every $i\leq n$:
+  A $k$-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a tuple $\Tt=\tuple{T_1,\dots,T_{k}}$ such that for every $i\leq n$:
   \begin{itemize}
   \item  $T_i$ is a 1-pebble transducer, whose set of states is denoted $Q_i$;
-  \item  The input alphabet of $T_i$ is $\Sigma(Q_{>i})$, with $Q_{>i}=\bigcup_{j\in [i+1,k]}Q_j)$;
+  \item  The input alphabet of $T_i$ is $\Sigma(Q_{>i})\quad$ (with $Q_{>i}=\bigcup_{j\in [i+1,k]}Q_j$);
   \item  The output alphabet of $T_i$ is $\Gamma \cup [1,i-1]$.
   \end{itemize} 
   In particular, the input alphabet of $T_k$ is $\Sigma$ and the output alphabet of $T_1$ is $\Gamma$.%We denote by $\Tt_i$ the transducer $T_i$. 
@@ -74,12 +75,12 @@ In particular, the input alphabet of $T_k$ is $\Sigma$ and the output alphabet o
 
 %The alphabet $(\Gamma_{[l,m]})_{[m+1,n]}$ can be seen as the alphabet $\Gamma_{[l,n]}$. Indeed, every letter of $(\Gamma_{[l,m]})_{[m+1,n]}$ of the form $((a,e),f)$ where $e\subseteq [l,m]$ and  $f\subseteq [m+1,n]$ can be seen a a letter $(a,e\cup f)$ of $\Gamma_{[l,n]}$ and conversely.
 
-For every $k$-pebble transducer $\Tt=(T_j)_{j\in[1,k]}$ and $i\in[1,k]$,  the sequence $(T_j)_{j\in[1,i]}$ can be seen as an $i$-pebble transducer, of input alphabet $\Sigma(Q_{>i})$ and output alphabet $\Gamma$. We denote this transducer by $\Tt_i$.
+For every $k$-pebble transducer $\Tt=\tuple{T_j}_{j\in[1,k]}$ and $i\in[1,k]$,  the sequence $\\tuple{T_j}_{j\in[1,i]}$ can be seen as an $i$-pebble transducer, of input alphabet $\Sigma(Q_{>i})$ and output alphabet $\Gamma$. We denote this transducer by $\Tt_i$.
 %Similarly, the sequence   $(T_j)_{j\in[i+1,k]}$ can be seen as a $(k-i)$-pebble transducer, of input alphabet $\Sigma$ and output alphabet $\Gamma \cup [1,i]$. We denote them respectively by $\Tt[1,i]$ and $\Tt[i+1,k]$.
  
  \medskip
 \begin{terminology} 
- A $k$-pebble transducer $\Tt$ can be seen as the one pebble transducer $T_k$, which outsources a part of the computation to the other one pebble transducers $T_i$, $i<k$. 
+ A $k$-pebble transducer $\Tt$ can be seen as the one-pebble transducer $T_k$, which outsources a part of the computation to the other one-pebble transducers $T_i$, $i<k$. Then $T_i$ can itself call as subroutines the transducers of lower index, and so on.
  For this reason, we call \emph{the states of $\Tt$} the states of $T_k$, and \emph{the initial state of $\Tt$} the initial state of $T_k$. 
   \end{terminology}
   
@@ -87,19 +88,25 @@ For every $k$-pebble transducer $\Tt=(T_j)_{j\in[1,k]}$ and $i\in[1,k]$,  the se
  Let us define the function realized by a $k$-pebble transducer. 
   
   \begin{definition}
-We define, by induction on $k$ the function, realized by a $k$-pebble automaton. The case $k=1$ has been treated in Definition~\ref{def:1pebble}. 
+We define, by induction on $k$ the function, realized by a $k$-pebble transducer. The case $k=1$ has been treated in Definition~\ref{def:1pebble}. 
 
-Consider a $k+1$ pebble transducer $\Tt$. We set $Q_i$ to be the set of states of $\Tt_i$.
-Let us define the image of a word $w$ of $\Sigma^*$ by the transduction realized by $\Tt$.
+Consider a $k+1$ pebble transducer $\Tt=\tuple{T_1,\ldots,T_{k+1}}$, and let $Q_i$ be the set of states of $\Tt_i$, for $i\in [1,k+1]$. By induction assumption let $f_i:\Sigma_{[k,i+1]}^*\rightarrow \Gamma^*$ be the transduction realized by $\Tt_i$, for $i\in [1,k]$.
+Let us define the image of a word $w$ of $\Sigma^*$ by the transduction realized by $\Tt$:
+\begin{itemize}
+  \item Let $r=(q_j,p_j)_{j\in[1, n]}$ be the accepting run of $T_{k+1}$ over $w$ and $(\gamma_j)_{j\in[1, n]}$ be the outputs of the corresponding configurations.
+  
+  \item  For every $j\in[1,n]$, let $w_j$ be the word obtained from $w$ by replacing the letter $a$ at position $p_j$ by $a(q_j)$.
+      For every $j\in[1,n]$, let $u_j$ be the word obtained from $\gamma_j$ by replacing each occurrence of a letter $i\in [1,k]$ by $f_i(w_j)$.
+  
+  \end{itemize}
+  The image of $w$ by $\Tt$ is the word $u_1\cdots u_n$.
+\end{definition}
 
-\noindent Let $r=(q_j,\mathsf{pos}_j)_{j\in[1, n]}$ be the accepting run of $T_{k+1}$ over $w$ and $(o_j)_{j\in[1, n]}$ be the outputs of the corresponding configurations.
 
-\noindent Let $f_i:\Sigma_{[k,i+1]}^*\rightarrow \Gamma^*$ be the transduction realized by $\Tt[1,i]$,  its initial state.
- 
- For every $j\in[1,n]$, let $w_j$ be the word obtained from $w$ by replacing the letter $a$ at position $\mathsf{pos}_j$ by $(a,\set{q_j})$.
-    For every $j\in[1,n]$, let $u_j$ be the word obtained from $o_j$ by replacing each number $i\in [1,k]$ by $f_i(w_j)$.
-    
-The image of $w$ by $\Tt$ is the word $u_1\cdots u_n$.
+\begin{definition}
+  Let $f:\Sigma^*\rightarrow \Gamma^*$ be a word to word function. Its \emph{size function}, $|f|:\NN\rightarrow \NN$ is defined by $|f|(n)=\max_{|w|\leq n}|f(w)|$. For $k\in \NN$, we say that the function $f$ has \emph{degree $k$ size output} if $|f|(n)$ is equal to $\Oo(n^k)$ . Similarly, we say that $f$ has an output size of degree \emph{exactly} $k$ if $|f|(n)=\Theta(n^k)$. For $k=0,1,2,\ldots$, we use the usual terms constant, linear, quadratic, \textit{etc}.
+  If there exists $k$ such that $f$ has a degree $k$ size output, then we says that $f$ has polynomial size output.
+  
 \end{definition}
 
 \begin{comment}
@@ -131,8 +138,8 @@ Add an example.
 
 
 
-\begin{proposition}
-The function realized by a $k$-pebble transducer is $\mathcal{O}(n^k)$ in the lenght of the input word.
+\begin{proposition}[\cite{}]
+The function realized by a $k$-pebble transducer has degree $k$ size output.
 \end{proposition}
 
 \subsection{Transition monoids}
