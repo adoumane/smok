@@ -1,3 +1,15 @@
+
+\begin{definition}
+    Let $\mu:\Sigma^*\rightarrow M$ be a monoid morphism. Let $w\in \Sigma^*$, a $(k,p)$ factorization of $w$ in $M$ is a tuple $(w_0,v_{1,1},\ldots,v_{1,p},w_1,\ldots,v_{k,1},\ldots,v_{k,p}, w_k)$ verifying:
+    \begin{itemize}   
+        \item  $w=w_0v_{1,1}\cdots v_{1,p}w_1\cdots v_{k,1}\cdots v_{k,p} w_k$
+        \item for all $i\in [1,k]$, $\mu(v_{i,1})=\ldots=\mu(v_{i,p})=\mu(v_{i,1}v_{i,1})$
+    \end{itemize}
+    We say that such a factorization is \emph{according to} $(x_0,e_1,x_1,\ldots,e_k,x_k)$ if for all $i\in [0,k]$, $\mu(w_i)=x_i$ and for all $i\in [1,k]$, $\mu(v_{i,1})=e_i$.
+\end {definition}
+
+
+\begin{comment}
 \begin{lemma}
 Let $\Tt=\tuple{T_k,\ldots,T_1}$ be a $k$-pebble transducer over input alphabet $\Sigma$.
 One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over $\Sigma'=\Sigma\times L $ such that:
@@ -7,3 +19,36 @@ One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over 
 \end{itemize}
 
 \end{lemma}
+\end{comment}
+
+\begin{lemma}  
+    Let $\tuple{T_1,\ldots,T_{k+1}}$ be a pebble transducer realizing a function $f$, such that $T_{k+1}$ is bounded in $\set{k}$. Then $f$ can be realized by a $k$-pebble transducer.
+\end{lemma}     
+
+\begin{lemma}[Named Lemma]
+    Let $\Tt=\tuple{T_1,\ldots,T_k}$ be a pebble transducer over input alphabet $\Sigma$ realizing a function $f$.
+    There exists a morphism in a finite monoid $\mu:(\Sigma_{\vdash\dashv})^*\rightarrow M$ and a set $P\subseteq M^{2k+1}$ such that for all $p\in \NN$:
+    \begin{itemize}
+    \item For any $w\in \Sigma^*$ with a $(k,p)$ factorization 
+       $(w_0,v_{1,1},\ldots,v_{1,p},w_1,\ldots,v_{k,1},\ldots,v_{k,p}, w_k)$ according to an element of $P$, $|f(w_1v_{1,1}^n\cdots v_{k,1}^nw_n)|=\Theta(n^k)$.
+    \item $f$ restricted to words without $(k,p)$ factorization according to any element of $P$ can be realized by a $k{-}1$-pebble transducer.
+    \end{itemize}
+    
+\end{lemma}
+
+
+
+\begin{proof}
+    This is shown by induction on $k$.
+    For $k=1$, it is a consequence of the proof of Theorem~\ref{thm:linear}.
+
+    We assume that the lemma holds for $k$, let us show that it holds for $k+1$.
+\end{proof}
+
+\begin{theorem}
+    Given a pebble transducer $\Tt$ realizing a function $f$ and a natural number $k$, one can decide if $f$ can be realized by a $k$-pebble transducer. In particular, one can decide if a polyregular function is regular.
+\end{theorem}
+
+\begin{corollary}
+    A word-to-word function can be defined by an \mso interpretation of dimension $k$ if and only if it can be realized by a $k$-pebble transducer.
+\end{corollary}

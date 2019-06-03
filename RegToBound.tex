@@ -31,13 +31,13 @@ $(q_i,d_i)_{i\in[0,n]}$ satisfies the following conditions:
 \end{definition}
 
  \begin{definition}
-Let $f:\Sigma^*\to \Gamma^*$ be a function and $\Delta\subseteq\Sigma$. We say that $f$ is linear in $\Delta$ if $\pi_\Delta\circ f: \Gamma^*\to \Delta^*$ is linear, where $\pi_\Delta:\Sigma^*\to \Delta^*$ is the morphism defined on letters as follows:
+Let $f:\Sigma^*\to \Gamma^*$ be a function and $\Delta\subseteq\Sigma$. We say that $f$ is bounded (resp. linear, \textit{etc}) in $\Delta$ if $\pi_\Delta\circ f: \Gamma^*\to \Delta^*$ is bounded (resp. linear, \textit{etc}), where $\pi_\Delta:\Sigma^*\to \Delta^*$ is the morphism defined on letters as follows:
 \begin{align*}
 \pi_\Delta(a)&=a \text{ if }  a\in \Delta \\
 &= \epsilon \text{ otherwise.}
 \end{align*}
  \end{definition}
  
-\begin{theorem}
+\begin{theorem}\label{thm:linear}
 A 1-pebble transducer is linear in $\Delta$ if and only if it has a $\Delta$-linear triplet.
 \end{theorem}
