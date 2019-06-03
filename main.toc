@@ -1,0 +1,9 @@
+\contentsline {paragraph}{Notation}{1}
+\contentsline {section}{\numberline {1}Preliminaries}{1}
+\contentsline {subsection}{\numberline {1.1}Polyrational functions}{1}
+\contentsline {subsubsection}{\numberline {1.1.1}One pebble transducers}{1}
+\contentsline {subsubsection}{\numberline {1.1.2}$k$-pebble transducers}{2}
+\contentsline {subsection}{\numberline {1.2}Transition monoids}{4}
+\contentsline {section}{\numberline {2}Deciding if a regular function is in ${\mathcal O}(1)$}{5}
+\contentsline {section}{\numberline {3}Deciding if a polyregular function is in ${\mathcal O}(n^k)$}{6}
+\contentsline {section}{\numberline {4}Conclusion}{6}

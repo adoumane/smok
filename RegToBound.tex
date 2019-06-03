@@ -19,7 +19,7 @@ We proceed in the same way for the other equality.
 \end{pr}
 
 \begin{definition}[Producing loop]
-Let $T=(\Sigma,\Gamma,Q,q_I,q_F, \delta)$ be a 1-pebble transducer, and let $\Delta\subseteq \Gamma$. Let $x, e, y\in \mathsf{Im}(\mu_\Delta(\vdash \Sigma^* \dashv))$.
+Let $T=(\Sigma,\Gamma,Q,q_I,q_F, \delta)$ be a 1-pebble transducer, and let $\Delta\subseteq \Gamma$. Let $x, e, y\in M_\Delta$, with $xey\in \mu_\Delta( { \vdash}\Sigma^*{ \dashv})$.
 
 We say that the triplet $(x,e,y)$ is \emph{$\Delta$-linear} if the transition sequence of $(xe,ey)$
 $(q_i,d_i)_{i\in[0,n]}$ satisfies the following conditions:
@@ -31,7 +31,7 @@ $(q_i,d_i)_{i\in[0,n]}$ satisfies the following conditions:
 \end{definition}
 
  \begin{definition}
-Let $f:\Gamma^*\to \Sigma^*$ be a function and $\Delta\subseteq\Sigma$. We say that $f$ is linear in $\Delta$ if $\pi_\Delta\circ f: \Gamma^*\to \Delta^*$ is linear, where $\pi_\Delta:\Sigma^*\to \Delta^*$ is the morphism defined on letters as follows:
+Let $f:\Sigma^*\to \Gamma^*$ be a function and $\Delta\subseteq\Sigma$. We say that $f$ is linear in $\Delta$ if $\pi_\Delta\circ f: \Gamma^*\to \Delta^*$ is linear, where $\pi_\Delta:\Sigma^*\to \Delta^*$ is the morphism defined on letters as follows:
 \begin{align*}
 \pi_\Delta(a)&=a \text{ if }  a\in \Delta \\
 &= \epsilon \text{ otherwise.}
@@ -39,5 +39,5 @@ Let $f:\Gamma^*\to \Sigma^*$ be a function and $\Delta\subseteq\Sigma$. We say t
  \end{definition}
  
 \begin{theorem}
-A 1-pebble transducer is linear in $\Delta$ if and only if it has no $\Delta$-linear triplet.
+A 1-pebble transducer is linear in $\Delta$ if and only if it has a $\Delta$-linear triplet.
 \end{theorem}
