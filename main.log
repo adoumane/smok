@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.9.5)  3 JUN 2019 17:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.9.5)  4 JUN 2019 17:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -347,7 +347,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 13.
  [2] Excluding 'comment' comment. Excluding 'comment' comment. [3] [4]) (/Users/nathan/Documents/postdoc wrszw/smok/RegToBound.tex [5]) (/Users/nathan/Documents/postdoc wrszw/smok/PolyToReg.tex Excluding 'comment' comment.
-Overfull \hbox (47.94785pt too wide) in paragraph at lines 32--34
+Overfull \hbox (47.94785pt too wide) in paragraph at lines 33--35
 []\OT1/cmr/m/it/10 For any $\OML/cmm/m/it/10 w \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 ^^F[]$ \OT1/cmr/m/it/10 with a $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; p\OT1/cmr/m/n/10 )$ \OT1/cmr/m/it/10 fac-tor-iza-tion $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 w[]; v[]; [] ; v[]; w[]; [] ; v[]; [] ; v[]; w[]\OT1/cmr/m/n/10 )$
  []
 
@@ -357,15 +357,15 @@ LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
 ) [7] (/Users/nathan/Documents/postdoc wrszw/smok/main.aux) ) 
 Here is how much of TeX's memory you used:
- 6657 strings out of 493014
- 92086 string characters out of 6133352
- 207315 words of memory out of 5000000
- 10017 multiletter control sequences out of 15000+600000
+ 6658 strings out of 493014
+ 92096 string characters out of 6133352
+ 207325 words of memory out of 5000000
+ 10018 multiletter control sequences out of 15000+600000
  17591 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,10n,40p,3280b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf" (7 pages, 209519 bytes).
+Output written on "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf" (7 pages, 213127 bytes).
 PDF statistics:
  100 PDF objects out of 1000 (max. 8388607)
  72 compressed objects within 1 object stream

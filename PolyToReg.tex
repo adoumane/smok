@@ -1,6 +1,7 @@
 
 \begin{definition}
-    Let $\mu:\Sigma^*\rightarrow M$ be a monoid morphism. Let $w\in \Sigma^*$, a $(k,p)$ factorization of $w$ in $M$ is a tuple $(w_0,v_{1,1},\ldots,v_{1,p},w_1,\ldots,v_{k,1},\ldots,v_{k,p}, w_k)$ verifying:
+    Let $\mu:\Sigma^*\rightarrow M$ be a monoid morphism and let $w$ be in $ \Sigma^*$.
+    A $(k,p)$-factorization of $w$ in the monoid $M$ is given as a tuple of words $(w_0,v_{1,1},\ldots,v_{1,p},w_1,\ldots,v_{k,1},\ldots,v_{k,p}, w_k)$ verifying:
     \begin{itemize}   
         \item  $w=w_0v_{1,1}\cdots v_{1,p}w_1\cdots v_{k,1}\cdots v_{k,p} w_k$
         \item for all $i\in [1,k]$, $\mu(v_{i,1})=\ldots=\mu(v_{i,p})=\mu(v_{i,1}v_{i,1})$
@@ -25,7 +26,7 @@ One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over 
     Let $\tuple{T_1,\ldots,T_{k+1}}$ be a pebble transducer realizing a function $f$, such that $T_{k+1}$ is bounded in $\set{k}$. Then $f$ can be realized by a $k$-pebble transducer.
 \end{lemma}     
 
-\begin{lemma}[Named Lemma]
+\begin{lemma}[Named Lemma]\label{lem:name}
     Let $\Tt=\tuple{T_1,\ldots,T_k}$ be a pebble transducer over input alphabet $\Sigma$ realizing a function $f$.
     There exists a morphism in a finite monoid $\mu:(\Sigma_{\vdash\dashv})^*\rightarrow M$ and a set $P\subseteq M^{2k+1}$ such that for all $p\in \NN$:
     \begin{itemize}
@@ -43,6 +44,24 @@ One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over 
     For $k=1$, it is a consequence of the proof of Theorem~\ref{thm:linear}.
 
     We assume that the lemma holds for $k$, let us show that it holds for $k+1$.
+    Let $\Tt=\tuple{T_1,\ldots,T_k,T_{k+1}}$ be a pebble transducer realizing a function $f:\Sigma^*\rightarrow\Gamma^*$, and let $\Tt_k=\tuple{T_1,\ldots,T_k}$. Let $f_k:\Sigma(Q_{k+1})^*\rightarrow \Gamma^*$ be the function realized by $\Tt_k$.
+
+    Let us apply the induction assumption to $\Tt_k$, and let $\mu:(\Sigma(Q_{k+1})_{\vdash\dashv})^*\rightarrow M$ and $P$ be given as in the lemma. For any $p$, let $\Ss_p$ be a $k{-}1$-pebble transducer realizing the function $f_k$ restricted to words without any $(k,p)$ factorization according to elements of $P$, and let $g_p$ denote the function it realizes.
+
+    The main idea of the proof is to modify the transducer $T_{k+1}$ into a new transducer which only outputs $k$ when it is \emph{absolutely necessary}, \textit{i.e.}~when the word can be factorized in such a way that, by pumping idempotents, one can obtain an output in $\Theta(n^k)$.
+    Otherwise, we have according to the lemma that we can outsource the computation to a transducer with only $k-1$ pebbles.
+
+    Let us define a new transducer $T_{k+1}^p$ which behaves as $T_k$, except that at each step where it should output the letter $k$, it checks, using some regular look-around if the word has a $(k,p)$ factorization according to an element of $P$. If yes then it outputs $k$ normally, otherwise, it calls $\Ss_p$ instead.
+
+    The look-around is implemented by a rational function $\ell$ which labels each position by additional information.
+    Let $L=Q_{k+1}\rightarrow \set{\Ss_p,\Tt_k}$ be the labelling alphabet, then $\ell:(\Sigma(Q_{k+1}))^*\rightarrow (\Sigma(Q_{k+1})\times L)^*$ is defined below
+    Let $w\in (\Sigma(Q_{k+1}))^*$, the word $z=\ell(w)$ has the same size as $w$ and $z[i]=(w[i],h)$ with $h(q)=\Tt_k$ if and only if the word obtained by replacing $w[i]$ with $w[i](q)$ has a $(k,p)$ factorization according to an element of $P$.
+
+    Let
+    \begin{claim}
+        Let $\mu:\Sigma^*\rightarrow M$ be a monoid morphism and let $w=v_1v_2v_3$ be in $ \Sigma^*$, with $\mu(v_2)=\mu(v_2v_2)$.
+        Let us assume that $w$ has a $k$ factorization according to $t$, then $v_1v_2v_2v_3$ also does.
+    \end{claim}
 \end{proof}
 
 \begin{theorem}
