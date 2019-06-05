@@ -1,13 +1,15 @@
 
 \begin{definition}
     Let $\mu:\Sigma^*\rightarrow M$ be a monoid morphism and let $w$ be in $ \Sigma^*$.
-    A $(k,p)$-factorization of $w$ in the monoid $M$ is given as a tuple of words $(w_0,v_{1,1},\ldots,v_{1,p},w_1,\ldots,v_{k,1},\ldots,v_{k,p}, w_k)$ verifying:
+    A $k$-factorization of $w$ in the morphism $\mu$ is given as a tuple of words $(w_0,x_{1},y_1,z_1,w_1,\ldots,x_k,y_k,z_k, w_k)$ verifying:
     \begin{itemize}   
-        \item  $w=w_0v_{1,1}\cdots v_{1,p}w_1\cdots v_{k,1}\cdots v_{k,p} w_k$
-        \item for all $i\in [1,k]$, $\mu(v_{i,1})=\ldots=\mu(v_{i,p})=\mu(v_{i,1}v_{i,1})$
+        \item  $w=w_0x_1y_1z_1w_1\cdots x_ky_kz_kw_k$
+        \item for all $i\in [1,k]$, $\mu(x_i)=\mu(y_i)=\mu(z_i)=\mu(x_ix_i)$
     \end{itemize}
-    We say that such a factorization is \emph{according to} $(x_0,e_1,x_1,\ldots,e_k,x_k)$ if for all $i\in [0,k]$, $\mu(w_i)=x_i$ and for all $i\in [1,k]$, $\mu(v_{i,1})=e_i$.
+    We say that such a factorization is \emph{according to} $(m_0,e_1,m_1,\ldots,e_k,m_k)$ if for all $i\in [0,k]$, $\mu(w_i)=m_i$ and for all $i\in [1,k]$, $\mu(x_{i})=e_i$.
 \end {definition}
+
+
 
 
 \begin{comment}
@@ -30,9 +32,9 @@ One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over 
     Let $\Tt=\tuple{T_1,\ldots,T_k}$ be a pebble transducer over input alphabet $\Sigma$ realizing a function $f$.
     There exists a morphism in a finite monoid $\mu:(\Sigma_{\vdash\dashv})^*\rightarrow M$ and a set $P\subseteq M^{2k+1}$ such that for all $p\in \NN$:
     \begin{itemize}
-    \item For any $w\in \Sigma^*$ with a $(k,p)$ factorization 
-       $(w_0,v_{1,1},\ldots,v_{1,p},w_1,\ldots,v_{k,1},\ldots,v_{k,p}, w_k)$ according to an element of $P$, $|f(w_1v_{1,1}^n\cdots v_{k,1}^nw_n)|=\Theta(n^k)$.
-    \item $f$ restricted to words without $(k,p)$ factorization according to any element of $P$ can be realized by a $k{-}1$-pebble transducer.
+    \item For any $w\in \Sigma^*$ with a $k$ factorization 
+    $(w_0,x_{1},y_1,z_1,w_1,\ldots,x_k,y_k,z_k, w_k)$ according to an element of $P$, $|f(w_1x_1y_{1}^nz_1w_1\cdots x_ky_k^nz_kw_k)|=\Theta(n^k)$.
+    \item $f$ restricted to words without $k$ factorization according to any element of $P$ can be realized by a $k{-}1$-pebble transducer.
     \end{itemize}
     
 \end{lemma}
@@ -46,7 +48,7 @@ One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over 
     We assume that the lemma holds for $k$, let us show that it holds for $k+1$.
     Let $\Tt=\tuple{T_1,\ldots,T_k,T_{k+1}}$ be a pebble transducer realizing a function $f:\Sigma^*\rightarrow\Gamma^*$, and let $\Tt_k=\tuple{T_1,\ldots,T_k}$. Let $f_k:\Sigma(Q_{k+1})^*\rightarrow \Gamma^*$ be the function realized by $\Tt_k$.
 
-    Let us apply the induction assumption to $\Tt_k$, and let $\mu:(\Sigma(Q_{k+1})_{\vdash\dashv})^*\rightarrow M$ and $P$ be given as in the lemma. For any $p$, let $\Ss_p$ be a $k{-}1$-pebble transducer realizing the function $f_k$ restricted to words without any $(k,p)$ factorization according to elements of $P$, and let $g_p$ denote the function it realizes.
+    Let us apply the induction assumption to $\Tt_k$, and let $\mu:(\Sigma_{k,\vdash\dashv})^*\rightarrow M$ and $P$ be given as in the lemma, with $\Sigma_k=\Sigma(Q_{k+1})$. For any $p$, let $\Ss_p$ be a $k{-}1$-pebble transducer realizing the function $f_k$ restricted to words without any $k$ factorization according to elements of $P$, and let $g_p$ denote the function it realizes.
 
     The main idea of the proof is to modify the transducer $T_{k+1}$ into a new transducer which only outputs $k$ when it is \emph{absolutely necessary}, \textit{i.e.}~when the word can be factorized in such a way that, by pumping idempotents, one can obtain an output in $\Theta(n^k)$.
     Otherwise, we have according to the lemma that we can outsource the computation to a transducer with only $k-1$ pebbles.
@@ -54,14 +56,23 @@ One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over 
     Let us define a new transducer $T_{k+1}^p$ which behaves as $T_k$, except that at each step where it should output the letter $k$, it checks, using some regular look-around if the word has a $(k,p)$ factorization according to an element of $P$. If yes then it outputs $k$ normally, otherwise, it calls $\Ss_p$ instead.
 
     The look-around is implemented by a rational function $\ell$ which labels each position by additional information.
-    Let $L=Q_{k+1}\rightarrow \set{\Ss_p,\Tt_k}$ be the labelling alphabet, then $\ell:(\Sigma(Q_{k+1}))^*\rightarrow (\Sigma(Q_{k+1})\times L)^*$ is defined below:
-    Let $w\in (\Sigma(Q_{k+1}))^*$, the word $z=\ell(w)$ has the same size as $w$ and $z[i]=(w[i],h)$ with $h(q)=\Tt_k$ if and only if the word obtained by replacing $w[i]$ with $w[i](q)$ has a $(k,p)$ factorization according to an element of $P$.
+    Let $L=Q_{k+1}\rightarrow \set{\Ss_p,\Tt_k}$ be the labelling alphabet, then $\ell:(\Sigma)^*\rightarrow (\Sigma\times L)^*$ is defined below:
+    Let $w\in (\Sigma)^*$, the word $z=\ell(w)$ has the same size as $w$ and $z[i]=(w[i],h)$ with $h(q)=\Tt_k$ if and only if the word obtained by replacing $w[i]$ with $w[i](q)$ has a $k$ factorization according to an element of $P$.
+    Let $\Lambda=\Sigma\times L$ in the following.
 
-    Let
-    \begin{claim}
-        Let $\mu:\Sigma^*\rightarrow M$ be a monoid morphism and let $w=v_1v_2v_3$ be in $ \Sigma^*$, with $\mu(v_2)=\mu(v_2v_2)$.
-        Let us assume that $w$ has a $k$ factorization according to $t$, then $v_1v_2v_2v_3$ also does.
+    Let $\mu_{ \set{k}}:(\Lambda_{\vdash\dashv})^* \to M_{\mathbf 2}$ be the transition morphism of $T_{k+1}^p$.
+
+
+    \begin{claim}\label{claim:pump}
+        Let $u=\ell(v)$ be in $ \Lambda^*$.
+        Let us consider $(w_0,x_1,y_1,z_1,w_1)$ be a $1$ factorization of $v$.
+        Let $u_n=\ell(w_0x_1y_1^nz_1w_1)$, then there exists $\alpha,\beta,\gamma\in \Lambda^*$ such that $u_n=\alpha\beta^n\gamma$, for all $n\in \NN$.
     \end{claim}
+\begin{proof}[Claim~\ref{claim:pump}]
+    Shown using Lemma~\ref{lem:2idem}.
+\end{proof}
+
+Let us consider the $\set{k}$-linear triplets of $T_k^p$. We show that 
 \end{proof}
 
 \begin{theorem}
