@@ -54,7 +54,7 @@ One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over 
     Let us define a new transducer $T_{k+1}^p$ which behaves as $T_k$, except that at each step where it should output the letter $k$, it checks, using some regular look-around if the word has a $(k,p)$ factorization according to an element of $P$. If yes then it outputs $k$ normally, otherwise, it calls $\Ss_p$ instead.
 
     The look-around is implemented by a rational function $\ell$ which labels each position by additional information.
-    Let $L=Q_{k+1}\rightarrow \set{\Ss_p,\Tt_k}$ be the labelling alphabet, then $\ell:(\Sigma(Q_{k+1}))^*\rightarrow (\Sigma(Q_{k+1})\times L)^*$ is defined below
+    Let $L=Q_{k+1}\rightarrow \set{\Ss_p,\Tt_k}$ be the labelling alphabet, then $\ell:(\Sigma(Q_{k+1}))^*\rightarrow (\Sigma(Q_{k+1})\times L)^*$ is defined below:
     Let $w\in (\Sigma(Q_{k+1}))^*$, the word $z=\ell(w)$ has the same size as $w$ and $z[i]=(w[i],h)$ with $h(q)=\Tt_k$ if and only if the word obtained by replacing $w[i]$ with $w[i](q)$ has a $(k,p)$ factorization according to an element of $P$.
 
     Let

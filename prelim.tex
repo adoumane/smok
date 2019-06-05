@@ -17,7 +17,7 @@ A 1-pebble transducer is a tuple $(\Sigma,\Gamma, Q, q_I, q_F, \delta)$, which c
 $$\delta : Q\times \Sigma\cup\{\vdash,\dashv\} \to Q\times\set{\rightarrow,\leftarrow}\times\Gamma^*$$
 The symbols  $\vdash$ and $\dashv$ are the endmarkers of the word. 
 \end{itemize}
-We assume that the transducer can only move to the right when it is on the left endmarker $\vdash$, and only to the left when  it is on the right endmarker $\dashv$.
+We assume that the transducer can only move to the right when it is on the left endmarker $\vdash$, and only to the left when  it is on the right endmarker $\dashv$. We also assume that the endmarkers don't output anything, meaning  $\delta(Q\times\set{\vdash,\dashv})\subseteq Q\times\set{\rightarrow,\leftarrow}\times \set{\epsilon}$.
  \end{definition}
 
 
@@ -35,7 +35,7 @@ where:
 
 The initial configuration is $(q_I, 0)$. The automaton accepts a word if there is an accepting run,
 i.e. a run where the first configuration is initial, the last one has an accepting
-state, and no other configurations have an accepting state. The accepting run, if it exists, is unique, by determinism of the transition function.
+state, and no other configuration has an accepting state. The accepting run, if it exists, is unique, by determinism of the transition function.
 
 
 \subsubsection{$k$-pebble transducers}
