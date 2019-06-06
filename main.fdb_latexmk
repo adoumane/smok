@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex main"] 1559812038 "main.aux" "main.bbl" "main" 1559812715
+["bibtex main"] 1559830431 "main.aux" "main.bbl" "main" 1559831470
   "/usr/local/texlive/2016/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "bib.bib" 1554283557 1015 9f8c9d667bbe3f4a816de6365b51e73e ""
-  "main.aux" 1559812714 1036 f112da36fc6199f72f3ac0efb2255f14 ""
+  "main.aux" 1559830611 1069 055c921fe51b95e9b06c31c0dba1e882 ""
   "main.bcf" 0 -1 0 ""
   (generated)
-  "main.bbl"
   "main.blg"
-["pdflatex"] 1559812714 "/Users/nathan/Documents/postdoc wrszw/smok/main.tex" "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf" "main" 1559812715
-  "/Users/nathan/Documents/postdoc wrszw/smok/main.aux" 1559812714 1036 f112da36fc6199f72f3ac0efb2255f14 ""
+  "main.bbl"
+["pdflatex"] 1559830611 "/Users/nathan/Documents/postdoc wrszw/smok/main.tex" "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf" "main" 1559831470
+  "/Users/nathan/Documents/postdoc wrszw/smok/main.aux" 1559830611 1069 055c921fe51b95e9b06c31c0dba1e882 ""
   "/Users/nathan/Documents/postdoc wrszw/smok/main.tex" 1559575035 753 12ee8b691ff3ada6e47e80d16de2c1ef ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -139,19 +139,19 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1473067451 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1473067744 3873396 a2e721d2dc896b7219f1e27ce0c3875a ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "PolyToReg.tex" 1559812714 6089 e3a046ba3ec5f268383c9f9ae61635fa ""
-  "RegToBound.tex" 1559749073 1942 24796822b0426e47bbd8dbf7e53a39cf ""
+  "PolyToReg.tex" 1559831470 6228 3ec5cc245a8809a00a5a5c0c9f68bbb2 ""
+  "RegToBound.tex" 1559830611 3334 d0d873bf02ba0d9516ff3c94b6d30cd0 ""
   "introduction.tex" 1558444983 466 03f8d2e021a49e6aaad8a92f119a1fec ""
   "macros.sty" 1559379630 4950 effc8cb638538cfa225c38a41e48ee39 ""
-  "main.aux" 1559812714 1036 f112da36fc6199f72f3ac0efb2255f14 ""
-  "main.bbl" 1559812039 49 0eba253fc001332e731e8aba3f23127b "bibtex main"
+  "main.aux" 1559830611 1069 055c921fe51b95e9b06c31c0dba1e882 ""
+  "main.bbl" 1559830432 49 0eba253fc001332e731e8aba3f23127b "bibtex main"
   "main.tex" 1559575035 753 12ee8b691ff3ada6e47e80d16de2c1ef ""
-  "main.toc" 1559812714 642 e54c627dfa5b6dac07861d5361f9fa8a ""
-  "prelim.tex" 1559724016 13304 92442265a4e80c340a3c34d6f67f080a ""
+  "main.toc" 1559830612 642 74e4f9e590cd5839743ff10838c47ec8 ""
+  "prelim.tex" 1559826680 13536 1bd8e4e79034fec155425fce278b6bcf ""
   (generated)
-  "main.aux"
-  "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf"
-  "main.log"
   "main.pdf"
+  "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf"
   "main.toc"
+  "main.log"
+  "main.aux"
   "/Users/nathan/Documents/postdoc wrszw/smok/main.log"

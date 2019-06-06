@@ -1,7 +1,7 @@
 \subsection{Polyrational functions}
 
-\subsubsection{One pebble transducers}
-A one pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a two way automaton (meaning that it has a reading head, called here a pebble, which can scan the word on both directions) which reads words over $\Sigma^*$, and which has the ability to output words over $\Gamma^*$ on every transition. A configuration looks like this:
+\subsubsection{One-pebble transducers}
+A one-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a two way automaton (meaning that it has a reading head, called here a pebble, which can scan the word on both directions) which reads words over $\Sigma^*$, and which has the ability to output words over $\Gamma^*$ on every transition. A configuration looks like this:
 \begin{center}
 Picture
 \end{center} 
@@ -40,8 +40,8 @@ state, and no other configuration has an accepting state. The accepting run, if 
 
 \subsubsection{$k$-pebble transducers}
 
-In the literature~\cite{}, a $k$-pebble transducer is a transducer with $k$ reading heads. The movement of these heads is subject to a stack discipline: only the pebble on top of the stack can move. Add details, and a precise definition of this version of $k$-pebble automata. 
-In this paper, we will work with a different yet equivalent definition of $k$-pebble automata. Here a $k$-pebble transducer is a collection of $k$ one-pebble automata. Add an informal definition.
+In the literature~\cite{}, a $k$-pebble transducer is a transducer with $k$ reading heads. The movement of these heads is subject to a stack discipline: only the pebble on top of the stack can move. Add details, and a precise definition of this version of $k$-pebble transducers. 
+In this paper, we will work with a different yet equivalent definition of $k$-pebble transducer. Here a $k$-pebble transducer is a collection of $k$ one-pebble automata. The idea is that the transducer number $k$ can, along its run, call transducer $k-1$ to run over its current configuration. Then transducer $k-1$ can itself call transducer $k-2$ to run over its current configuration, and so on.
 \begin{center}
 Picture
 \end{center}
@@ -90,7 +90,7 @@ For every $k$-pebble transducer $\Tt=\tuple{T_j}_{j\in[1,k]}$ and $i\in[1,k]$,  
   \begin{definition}
 We define, by induction on $k$, the function realized by a $k$-pebble transducer. The case $k=1$ has been treated in Definition~\ref{def:1pebble}. 
 
-Consider a $k+1$ pebble transducer $\Tt=\tuple{T_1,\ldots,T_{k+1}}$, and let $Q_i$ be the set of states of $\Tt_i$, for $i\in [1,k+1]$. By induction assumption let $f_i:\Sigma(Q_{>i})^*\rightarrow \Gamma^*$ be the transduction realized by $\Tt_i$, for $i\in [1,k]$.
+Consider a $k+1$ pebble transducer $\Tt=\tuple{T_1,\ldots,T_{k+1}}$, and let $Q_i$ be the set of states of $T_i$, for $i\in [1,k+1]$. By induction let $f_i:\Sigma(Q_{>i})^*\rightarrow \Gamma^*$ denote the transduction realized by $\Tt_i$, for $i\in [1,k]$.
 Let us define the image of a word $w$ of $\Sigma^*$ by the transduction realized by $\Tt$:
 \begin{itemize}
   \item Let $r=(q_j,p_j)_{j\in[1, n]}$ be the accepting run of $T_{k+1}$ over $w$ and $(\gamma_j)_{j\in[1, n]}$ be the outputs of the corresponding configurations.
@@ -103,8 +103,15 @@ Let us define the image of a word $w$ of $\Sigma^*$ by the transduction realized
 \end{definition}
 
 
+\begin{example}
+  \begin{center}
+  Add an example.
+  \end{center}
+  \end{example}
+  
+
 \begin{definition}
-  Let $f:\Sigma^*\rightarrow \Gamma^*$ be a word to word function. Its \emph{size function}, $|f|:\NN\rightarrow \NN$ is defined by $|f|(n)=\max_{|w|\leq n}|f(w)|$. For $k\in \NN$, we say that the function $f$ has \emph{degree $k$ size output} if $|f|(n)$ is equal to $\Oo(n^k)$ . Similarly, we say that $f$ has an output size of degree \emph{exactly} $k$ if $|f|(n)=\Theta(n^k)$. For $k=0,1,2,\ldots$, we use the usual terms bounded, linear, quadratic, \textit{etc}.
+  Let $f:\Sigma^*\rightarrow \Gamma^*$ be a word to word function. Its \emph{size function}, $|f|:\NN\rightarrow \NN$ is defined by $|f|(n)=\max_{|w|\leq n}|f(w)|$. For $k\in \NN$, we say that the function $f$ has \emph{degree $k$ size output} if $|f|(n)$ is equal to $\Oo(n^k)$ . Similarly, we say that $f$ has an output size of degree \emph{strictly} $k$ if $|f|(n)=\Theta(n^k)$. For $k=0,1,2,\ldots$, we use the usual terms bounded, linear, quadratic, \textit{etc}.
   If there exists $k$ such that $f$ has a degree $k$ size output, then we says that $f$ has polynomial size output.
   
 \end{definition}
@@ -130,15 +137,11 @@ Let us define the image of a word $w$ of $\Sigma^*$ by the transduction realized
     
 \end{comment}
 
-\begin{example}
-\begin{center}
-Add an example.
-\end{center}
-\end{example}
 
 
 
 \begin{proposition}[\cite{}]
+  \label{prop:degree}
 The function realized by a $k$-pebble transducer has degree $k$ size output.
 \end{proposition}
 

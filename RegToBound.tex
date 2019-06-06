@@ -31,7 +31,7 @@ $(q_i,d_i)_{i\in[0,n]}$ satisfies the following conditions:
 \end{definition}
 
  \begin{definition}
-Let $f:\Sigma^*\to \Gamma^*$ be a function and $\Delta\subseteq\Sigma$. We say that $f$ is bounded (resp. linear, \textit{etc}) in $\Delta$ if $\pi_\Delta\circ f: \Gamma^*\to \Delta^*$ is bounded (resp. linear, \textit{etc}), where $\pi_\Delta:\Sigma^*\to \Delta^*$ is the morphism defined on letters as follows:
+Let $f:\Sigma^*\to \Gamma^*$ be a function and $\Delta\subseteq\Gamma$. We say that $f$ is bounded (resp. linear, \textit{etc}) in $\Delta$ if $\pi_\Delta\circ f: \Sigma^*\to \Delta^*$ is bounded (resp. linear, \textit{etc}), where $\pi_\Delta:\Gamma^*\to \Delta^*$ is the morphism defined on letters as follows:
 \begin{align*}
 \pi_\Delta(a)&=a \text{ if }  a\in \Delta \\
 &= \epsilon \text{ otherwise.}
@@ -39,5 +39,19 @@ Let $f:\Sigma^*\to \Gamma^*$ be a function and $\Delta\subseteq\Sigma$. We say t
  \end{definition}
  
 \begin{theorem}\label{thm:linear}
-A 1-pebble transducer is linear in $\Delta$ if and only if it has a $\Delta$-linear triplet.
+A 1-pebble transducer is strictly linear in $\Delta$ if and only if it has a $\Delta$-linear triple.
 \end{theorem}
+
+\begin{proof}
+    We know that a one-pebble transducer realizes a linear function, from Proposition~\ref{prop:degree}.
+    Let $T$ be a one-pebble transducer realizing a function $f:\Sigma^*\rightarrow \Gamma^*$, and let $\Delta\subseteq \Gamma$.
+
+    Let us first assume that there exists a $\Delta$-linear triple $(m_0,e_1,m_1)$, and let $w$ be a word such that $\vdash w\dashv $ has a $1$ factorization $(w_0,x_1,y_1,z_1,w_1)$ according to this triple.
+    Then we show that since $(m_0,e_1,m_1)$ is $\Delta$-linear, $|f(w_0x_1y_2^nz_1w_1)|=\Theta(n)$.
+    By definition of $\Delta$-linear triple, the output while reading a $y_1$ factor is non-empty, hence $f$ is strictly linear.
+
+    Let us now assume that there are no $\Delta$-linear triples.
+    According to the Factorization Forest Theorem of Simon, there exists an integer $d$ such that any word of length greater than $d$ has a $1$-factorization.
+    Let $w$ be a word with a $1$-factorization $(w_0,x_1,y_1,z_1,w_1)$. Since there are no $\Delta$-linear triple, $(\mu_\Delta(w_0),\mu_\Delta(y_1),\mu_\Delta(w_1))$ is not $\Delta$-linear. This means that the outputs corresponding to the factor $y_1$ in the run over $w$ are all empty, and thus we have $|f(w_0x_1y_1z_1w_1)|=|f(w_0x_1z_1w_1)|$.
+    Hence we have $\set{|f(w)|\mid\ w\in \Sigma^*}=\set{|f(w)|\mid\ w\in \Sigma^{\leq d}}$, hence $f$ is bounded.
+\end{proof}
