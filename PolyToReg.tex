@@ -24,7 +24,8 @@ One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over 
 \end{lemma}
 \end{comment}
 
-\begin{lemma}  
+\begin{lemma} 
+    \label{lem:bounded}
     Let $\tuple{T_1,\ldots,T_{k+1}}$ be a pebble transducer realizing a function $f$, such that $T_{k+1}$ is bounded in $\set{k}$. Then $f$ can be realized by a $k$-pebble transducer.
 \end{lemma}     
 
@@ -53,14 +54,12 @@ One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over 
     The main idea of the proof is to modify the transducer $T_{k+1}$ into a new transducer which only outputs $k$ when it is \emph{absolutely necessary}, \textit{i.e.}~when the word can be factorized in such a way that, by pumping idempotents, one can obtain an output in $\Theta(n^k)$.
     Otherwise, we have according to the lemma that we can outsource the computation to a transducer with only $k-1$ pebbles.
 
-    Let us define a new transducer $T_{k+1}^p$ which behaves as $T_k$, except that at each step where it should output the letter $k$, it checks, using some regular look-around if the word has a $(k,p)$ factorization according to an element of $P$. If yes then it outputs $k$ normally, otherwise, it calls $\Ss_p$ instead.
+    Let us define a new transducer $R_{k+1}$ which behaves as $T_{k}$, except that at each step where it should output the letter $k$, it checks, using some regular look-around if the word has a $(k,p)$ factorization according to an element of $P$. If yes then it outputs $k$ normally, calling $\Tt_k$, otherwise it calls $\Ss_p$ instead.
 
     The look-around is implemented by a rational function $\ell$ which labels each position by additional information.
     Let $L=Q_{k+1}\rightarrow \set{\Ss_p,\Tt_k}$ be the labelling alphabet, then $\ell:(\Sigma)^*\rightarrow (\Sigma\times L)^*$ is defined below:
     Let $w\in (\Sigma)^*$, the word $z=\ell(w)$ has the same size as $w$ and $z[i]=(w[i],h)$ with $h(q)=\Tt_k$ if and only if the word obtained by replacing $w[i]$ with $w[i](q)$ has a $k$ factorization according to an element of $P$.
     Let $\Lambda=\Sigma\times L$ in the following.
-
-    Let $\mu_{ \set{k}}:(\Lambda_{\vdash\dashv})^* \to M_{\mathbf 2}$ be the transition morphism of $T_{k+1}^p$.
 
 
     \begin{claim}\label{claim:pump}
@@ -71,8 +70,14 @@ One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over 
 \begin{proof}[Claim~\ref{claim:pump}]
     Shown using Lemma~\ref{lem:2idem}.
 \end{proof}
+From the above claim, we have that we can pump an idempotent of $M$ without affecting the labelling.
+This will not be sufficient however to obtain our final result. We also want to be able to pump an idempotent without changing the \emph{shape} of a run of $R_{k+1}$, that is its transitions without regard to the outputs.
+For this we consider the transition morphism $\mu_{\mathbf 0}:(\Sigma_{\vdash,\dashv})^*$ of $T_{k+1}$. Indeed, the shape of a run of $R_{k+1}$ over a word $\ell(v)$ is the same as the shape of a run of $T_{k+1}$ over $v$.
+Let $\nu=\mu\times \mu_{\mathbf 0}$ denote this product.
 
-Let us consider the $\set{k}$-linear triplets of $T_k^p$. We show that 
+Let us consider the $\set{k}$-linear triplets of $R_{k+1}$.
+We need to show two things, that the function over words whithout $\set{k}$-linear triplets can be done by a $k{-}1$-pebble transducer, and that otherwise we can find a $k$-factorization which yields $\Oo(n^k)$ output by pumping idempotents.
+The first can be obtained from Lemma~\ref{lem:bounded}. The second point is shown using Claim~\ref{claim:pump}.
 \end{proof}
 
 \begin{theorem}
