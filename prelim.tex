@@ -5,7 +5,7 @@ A one-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ 
 \begin{center}
 Picture
 \end{center} 
-The output of a one pebble transducer is the concatenation of the outputs of the transitions it took, in the chronological order of their emission.
+The output of a one pebble transducer is the concatenation of the outputs of the transitions it took, in the order of their emission.
 
 \begin{definition}\label{def:1pebble}
 A 1-pebble transducer is a tuple $(\Sigma,\Gamma, Q, q_I, q_F, \delta)$, which consists of:
@@ -33,14 +33,13 @@ where:
 
 % such that $c_{i+1}$ is the successor of $c_i$. \emph{The output} of a run is the word $(\mathsf{out}(c_i))_{0\leq i\leq n}$. 
 
-The initial configuration is $(q_I, 0)$. The automaton accepts a word if there is an accepting run,
-i.e. a run where the first configuration is initial, the last one has an accepting
-state, and no other configuration has an accepting state. The accepting run, if it exists, is unique, by determinism of the transition function.
+The initial configuration is $(q_I, 0)$. The final configuration is $(q_F,|w|+1)$ The automaton accepts $w$ if there is an accepting run,
+i.e. a run where the first configuration is initial, the last one is final, and no other configuration is final. The accepting run, if it exists, is unique, by determinism of the transition function.
 
 
 \subsubsection{$k$-pebble transducers}
 
-In the literature~\cite{}, a $k$-pebble transducer is a transducer with $k$ reading heads. The movement of these heads is subject to a stack discipline: only the pebble on top of the stack can move. Add details, and a precise definition of this version of $k$-pebble transducers. 
+In the literature~\cite{}, a $k$-pebble transducer is a transducer with $k$ reading heads. The movement of these heads is subject to a stack discipline: only the pebble on top of the stack can move.
 In this paper, we will work with a different yet equivalent definition of $k$-pebble transducer. Here a $k$-pebble transducer is a collection of $k$ one-pebble automata. The idea is that the transducer number $k$ can, along its run, call transducer $k-1$ to run over its current configuration. Then transducer $k-1$ can itself call transducer $k-2$ to run over its current configuration, and so on.
 \begin{center}
 Picture
@@ -80,7 +79,7 @@ For every $k$-pebble transducer $\Tt=\tuple{T_j}_{j\in[1,k]}$ and $i\in[1,k]$,  
  
  \medskip
 \begin{terminology} 
- A $k$-pebble transducer $\Tt$ can be seen as the one-pebble transducer $T_k$, which outsources a part of the computation to the other one-pebble transducers $T_i$, $i<k$. Then $T_i$ can itself call as subroutines the transducers of lower index, and so on.
+ A $k$-pebble transducer $\Tt$ can be seen as the one-pebble transducer $T_k$, which outsources a part of the computation to the other one-pebble transducers $T_i$, $i<k$. A $T_i$ can then itself call as subroutines the transducers of lower indexes, and so on.
  For this reason, we call \emph{the states of $\Tt$} the states of $T_k$, and \emph{the initial state of $\Tt$} the initial state of $T_k$. 
   \end{terminology}
   
@@ -93,7 +92,7 @@ We define, by induction on $k$, the function realized by a $k$-pebble transducer
 Consider a $k+1$ pebble transducer $\Tt=\tuple{T_1,\ldots,T_{k+1}}$, and let $Q_i$ be the set of states of $T_i$, for $i\in [1,k+1]$. By induction let $f_i:\Sigma(Q_{>i})^*\rightarrow \Gamma^*$ denote the transduction realized by $\Tt_i$, for $i\in [1,k]$.
 Let us define the image of a word $w$ of $\Sigma^*$ by the transduction realized by $\Tt$:
 \begin{itemize}
-  \item Let $r=(q_j,p_j)_{j\in[1, n]}$ be the accepting run of $T_{k+1}$ over $w$ and $(\gamma_j)_{j\in[1, n]}$ be the outputs of the corresponding configurations.
+  \item Let $r=(q_j,p_j)_{j\in[1, n+1]}$ be the accepting run of $T_{k+1}$ over $w$ and $(\gamma_j)_{j\in[1, n]}$ be the outputs of the corresponding configurations.
   
   \item  For every $j\in[1,n]$, let $w_j$ be the word obtained from $w$ by replacing the letter $a$ at position $p_j$ by $a(q_j)$.
       For every $j\in[1,n]$, let $u_j$ be the word obtained from $\gamma_j$ by replacing each occurrence of a letter $i\in [1,k]$ by $f_i(w_j)$.
@@ -146,7 +145,8 @@ The function realized by a $k$-pebble transducer has degree $k$ size output.
 \end{proposition}
 
 \subsection{Transition monoids}
-We present in this section a tool used to summarize the behaviour of one-pebble automata, and called its transition monoid. A chaque mot $w$, on associera un element de ce monoid qui nous dira: si j'entre dans le mot $w$ (par la droite ou par la gauche) en etant dans un certain atat $q$, alors je vais sortir du mot par la droite ou la  la gauche avec un certain etat. Suivant le besoin, on aura besoin d'enregistrer en plus des information sur l'output. Soit le mot emis en entier (c'est le monoid $M_{\Gamma^*}$), ou alors une information binaire qui dit si oui ou non j'ai emis un mot (c'est le monoid $M_{\mathbf{2}}$) ou alors pas du tout d'information sur l'output (c'est le monoid $M_{\mathbf{0}}$).
+We present in this section a tool used to summarize the behaviour of one-pebble automata, and called its transition monoid (resp. morphism). We map each word  $w$ to an element of the monoid which gives the folliwing kind of information: if the automaton enters the word from the left in state $q$, then it exits to the \textit{e.g}~left in state $q'$, \textit{etc}.
+Moreover, we will sometimes need to record information about the output produced in such a pass of the transducer; this information can be for instance the whole output (in which case the monoid is infinite) or information of the kind ``a letter $a$ has been produced at least once'' (here we recover finiteness).
 
    
 \begin{definition}%[Transition monoid of a 1-pebble transducer]
@@ -187,8 +187,9 @@ Let us show define the transition morphisms associated with a 1-pebble transduce
 Let $T=(\Sigma, \Gamma, Q, q_I, q_F, \delta)$ be a 1-pebble transducer. 
 We define the morphism $\mu:(\Sigma_{\vdash\dashv})^*\to M_{\Gamma^*}$ as follows:
 $$\text{For every } d\in \set{\rightarrow,\leftarrow}\qquad\mu(a)(q,d)=\delta(a,q)$$
-Let $\Delta\subseteq \Gamma$. We define the morphism $\mu_\Delta:(\Sigma_{\vdash\dashv})^*\to M_{\mathbf 2}$ as follows. Let $1_\Delta:\Gamma^*\to \mathbf{2}$ be the morphism defined on letters as follows $1_\Delta(a)=1$ if $a\in \Delta$ and $1_\Delta(a)=0$ otherwise. We set then for every $d\in\set{\rightarrow,\leftarrow}$: 
-$$\text{If } \delta(a,q)=(q',d',w) \text{ then } \mu(a)(q,d)=(q',d',1_\Delta(w))$$
+Let $\Delta\subseteq \Gamma$. We define the morphism $\mu_\Delta:(\Sigma_{\vdash\dashv})^*\to M_{\mathbf 2}$ as follows. Let $1_\Delta:\Gamma^*\to \mathbf{2}$ be the morphism defined on letters as follows $1_\Delta(\gamma)=1$ if $\gamma\in \Delta$ and $1_\Delta(\gamma)=0$ otherwise. We set then for every $d\in\set{\rightarrow,\leftarrow}$: 
+
+$$\text{If } \delta(a,q)=(q',d',w) \text{ then } \mu_\Delta(a)(q,d)=(q',d',1_\Delta(w))$$
 We define the morphism $\mu_{\mathbf{0}}:(\Sigma_{\vdash\dashv})^*\to M_{\mathbf 0}$ as follows. For every $d\in\set{\rightarrow,\leftarrow}$,
 $$\text{if } \delta(a,q)=(q',d',w) \text{ then }  \mu(a)(q,d)=(q',d') $$
 \end{definition} 
