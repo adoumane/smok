@@ -31,7 +31,7 @@ One can obtain a new $k$-pebble transducer $\Tt'=\tuple{T_k',\ldots,T_1'}$ over 
 
 \begin{lemma}[Named Lemma]\label{lem:name}
     Let $\Tt=\tuple{T_1,\ldots,T_k}$ be a pebble transducer over input alphabet $\Sigma$ realizing a function $f$.
-    There exists a morphism in a finite monoid $\mu:(\Sigma_{\vdash\dashv})^*\rightarrow M$ and a set $P\subseteq M^{2k+1}$ such that for all $p\in \NN$:
+    There exists a morphism in a finite monoid $\mu:(\Sigma_{\vdash\dashv})^*\rightarrow M$ and a set $P\subseteq M^{2k+1}$ such that:
     \begin{itemize}
     \item For any $w\in \Sigma^*$ with a $k$ factorization 
     $(w_0,x_{1},y_1,z_1,w_1,\ldots,x_k,y_k,z_k, w_k)$ according to an element of $P$, $|f(w_1x_1y_{1}^nz_1w_1\cdots x_ky_k^nz_kw_k)|=\Theta(n^k)$.
@@ -76,22 +76,59 @@ For this we consider the transition morphism $\mu_{\mathbf 0}:(\Sigma_{\vdash,\d
 Let $\nu=\mu\times \mu_{\mathbf 0}$ denote this product.
 
 Let us consider the $\set{k}$-linear triplets of $R_{k+1}$.
-We need to show two things, 1) that the function over words whithout $\set{k}$-linear triplets can be done by a $k{-}1$-pebble transducer, and 2) that otherwise we can find a $k$-factorization which yields $\Theta(n^k)$ output by pumping idempotents $n$ times.
+We need to show two things, 1) that the function over words without $\set{k}$-linear triplets can be done by a $k{-}1$-pebble transducer, and 2) that otherwise we can find a $k$-factorization which yields $\Theta(n^k)$ output by pumping idempotents $n$ times.
 The first can be obtained from Lemma~\ref{lem:bounded}. The second point is shown using Claim~\ref{claim:pump}.
 
 Finally we show that we can remove the look-ahead and the result still holds.
 \end{proof}
 
+\section{Results}
+
+In this section we use the previous lemma to show several interesting results.
 \begin{theorem}
+    \label{thm:onk}
     A polyregular function is in $\Oo(n^k)$ if and only if it can be realized by a $k$-pebble transducer.
 \end{theorem}
+
+\begin{proof}
+    From Proposition~\ref{prop:degree}, we already have that $k$-pebble transductions are in $\Oo(n^k)$.
+    To show the converse we use Lemma~\ref{lem:name}.
+    Let $\Tt$ be a $j$-pebble transducer realizing a function $f$ in $\Oo(n^k)$.
+    If $j\leq k$ then $f$ can be realized by a $k$-pebble transducer. If $j>k$, then we only need to show that we can obtain a $j-1$-pebble transducer realizing $f$. Using Lemma~\ref{lem:name}, we know there is a morphism $\mu:(\Sigma_{\vdash\dashv})^*\rightarrow M$ and a set $P\subseteq M^{2j+1}$ such that:
+    \begin{itemize}
+    \item For any $w\in \Sigma^*$ with a $j$ factorization 
+    $(w_0,x_{1},y_1,z_1,w_1,\ldots,x_j,y_j,z_j, w_j)$ according to an element of $P$, $|f(w_1x_1y_{1}^nz_1w_1\cdots x_jy_j^nz_jw_j)|=\Theta(n^j)$.
+    \item $f$ restricted to words without $j$ factorization according to any element of $P$ can be realized by a $j{-}1$-pebble transducer.
+    \end{itemize}
+    Since $f$ is in $\Oo(n^k)$, $P$ has to be empty. Thus $f$ restricted to words without $j$ factorization according to any element of $P$ is just $f$. Hence $f$ can be realized by a $j-1$-pebble transducer.
+
+\end{proof}
+
+
 
 \begin{theorem}
     Given a pebble transducer $\Tt$ realizing a function $f$ and a natural number $k$, one can decide if $f$ can be realized by a $k$-pebble transducer. In particular, one can decide if a polyregular function is regular.
 \end{theorem}
 
+\begin{proof}
+    We only need to show that we can decide if a $k$-pebble transducer realizes a function that can be realized by a transducer with $k-1$ pebbles.
+
+    Let $\Tt=\tuple{T_1,\ldots,T_k}$ be a pebble transducer over input alphabet $\Sigma$ realizing a function $f$.
+
+    Using Lemma~\ref{lem:name}, we know there exists a morphism in a finite monoid $\mu:(\Sigma_{\vdash\dashv})^*\rightarrow M$ and a set $P\subseteq M^{2k+1}$ such that:
+    \begin{itemize}
+    \item For any $w\in \Sigma^*$ with a $k$ factorization 
+    $(w_0,x_{1},y_1,z_1,w_1,\ldots,x_k,y_k,z_k, w_k)$ according to an element of $P$, $|f(w_1x_1y_{1}^nz_1w_1\cdots x_ky_k^nz_kw_k)|=\Theta(n^k)$.
+    \item $f$ restricted to words without $k$ factorization according to any element of $P$ can be realized by a $k{-}1$-pebble transducer.
+    \end{itemize}
+    Here we use the same kind of argument as in the proof of Theorem~\ref{thm:onk}. Either $P$ is non-empty and $f$ is in $\Theta(n^k)$ and thus cannot be realized by a $k{-}1$-pebble transducer, or $P$ is empty and $f$ can be realized by a $k{-}1$-pebble transducer.
+\end{proof}
 
 
-\begin{corollary}
+
+\begin{theorem}
     A word-to-word function can be defined by an \mso interpretation of dimension $k$ if and only if it can be realized by a $k$-pebble transducer.
-\end{corollary}
+\end{theorem}
+
+\begin{proof}
+\end{proof}

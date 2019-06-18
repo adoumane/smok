@@ -1,11 +1,11 @@
 \subsection{Polyrational functions}
 
 \subsubsection{One-pebble transducers}
-A one-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a two way automaton (meaning that it has a reading head, called here a pebble, which can scan the word on both directions) which reads words over $\Sigma^*$, and which has the ability to output words over $\Gamma^*$ on every transition. A configuration looks like this:
+A one-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a two way automaton (meaning that it has a reading head, called here a pebble, which can scan the word on both directions) which reads words over $\Sigma^*$, and has the ability to output words over $\Gamma^*$ on every transition. A configuration looks like this:
 \begin{center}
 Picture
 \end{center} 
-The output of a one pebble transducer is the concatenation of the outputs of the transitions it took, in the order of their emission.
+The output of a one pebble transducer is the concatenation of the outputs of the transitions it took along a run.
 
 \begin{definition}\label{def:1pebble}
 A 1-pebble transducer is a tuple $(\Sigma,\Gamma, Q, q_I, q_F, \delta)$, which consists of:
@@ -21,7 +21,7 @@ We assume that the transducer can only move to the right when it is on the left 
  \end{definition}
 
 
-Let us define the behavior of the transducer over an input word $w\in\Sigma^*$. The transducer reads the word ${\vdash} w{\dashv}$ and we denote by $\Sigma_{\vdash\dashv}$ the set  $\Sigma\cup\set{\vdash,\dashv}$. \emph{A configuration} is a pair $(q,i)$ where $q$ is the control state and $i$ the position of the pebble on ${\vdash} w{\dashv}$. 
+Let us define the behavior of the transducer over an input word $w\in\Sigma^*$. The transducer reads the word ${\vdash} w{\dashv}$; and we denote by $\Sigma_{\vdash\dashv}$ the set  $\Sigma\cup\set{\vdash,\dashv}$. \emph{A configuration} is a pair $(q,i)$ where $q$ is the control state and $i$ the position of the pebble on ${\vdash} w{\dashv}$. 
 
 Let $(p,i)$ be a configuration and suppose that $\delta(p, {\vdash} w{\dashv}[i])=(q,d,\gamma)$. \emph{The successor of $(p,i)$} is the configuration $(q,j)$
 where:
@@ -33,7 +33,7 @@ where:
 
 % such that $c_{i+1}$ is the successor of $c_i$. \emph{The output} of a run is the word $(\mathsf{out}(c_i))_{0\leq i\leq n}$. 
 
-The initial configuration is $(q_I, 0)$. The final configuration is $(q_F,|w|+1)$ The automaton accepts $w$ if there is an accepting run,
+The initial configuration is $(q_I, 0)$ and the final configuration is $(q_F,|w|+1)$. The automaton accepts $w$ if there is an accepting run,
 i.e. a run where the first configuration is initial, the last one is final, and no other configuration is final. The accepting run, if it exists, is unique, by determinism of the transition function.
 
 
@@ -79,7 +79,8 @@ For every $k$-pebble transducer $\Tt=\tuple{T_j}_{j\in[1,k]}$ and $i\in[1,k]$,  
  
  \medskip
 \begin{terminology} 
- A $k$-pebble transducer $\Tt$ can be seen as the one-pebble transducer $T_k$, which outsources a part of the computation to the other one-pebble transducers $T_i$, $i<k$. A $T_i$ can then itself call as subroutines the transducers of lower indexes, and so on.
+ A $k$-pebble transducer $\Tt$ can be seen as the one-pebble transducer $T_k$, which outsources a part of the computation to the other one-pebble transducers $T_i$, $i<k$.
+ Transducer $T_i$ can then itself call as subroutines the transducers of lower indexes, and so on.
  For this reason, we call \emph{the states of $\Tt$} the states of $T_k$, and \emph{the initial state of $\Tt$} the initial state of $T_k$. 
   \end{terminology}
   
@@ -145,14 +146,14 @@ The function realized by a $k$-pebble transducer has degree $k$ size output.
 \end{proposition}
 
 \subsection{Transition monoids}
-We present in this section a tool used to summarize the behaviour of one-pebble automata, and called its transition monoid (resp. morphism). We map each word  $w$ to an element of the monoid which gives the folliwing kind of information: if the automaton enters the word from the left in state $q$, then it exits to the \textit{e.g}~left in state $q'$, \textit{etc}.
+We present in this section a tool used to summarize the behavior of a one-pebble automaton, and called its transition monoid (resp. morphism). We map each word  $w$ to an element of the monoid which gives the following kind of information \textit{e.g}~: if the automaton enters the word from the left in state $q$, then it exits to the left in state $q'$, \textit{etc}.
 Moreover, we will sometimes need to record information about the output produced in such a pass of the transducer; this information can be for instance the whole output (in which case the monoid is infinite) or information of the kind ``a letter $a$ has been produced at least once'' (here we recover finiteness).
 
    
 \begin{definition}%[Transition monoid of a 1-pebble transducer]
 Let $T$ be a 1-pebble automaton with set of states $Q$. Let $N$ be a monoid, and let $\star$ be its multiplication.
 
-We define the transition monoind $M_N$ of $T$ as follows:
+We define the transition monoid $M_N$ of $T$ as follows:
 \begin{itemize}
 \item its elements are functions of the form $f:Q\times\set{\rightarrow,\leftarrow}\to Q\times\set{\rightarrow,\leftarrow}\times N$;
 \item the composition $\cdot$ is defined as follows. Let $f, g$ be two elements of $M_N$, $q\in Q$ and $d\in\set{\rightarrow, \leftarrow}$. We define the \emph{transition sequence} between 
@@ -166,7 +167,7 @@ $f$ and $g$ starting from $(q,d)$ and its \emph{output sequence} to be respectiv
 We set $(f\cdot g) (q,d)$ to be $(q_n, d_n, w_1\star\dots\star w_n)$.
 \end{itemize}
 \end{definition}
-We will mainly instanciate $M_N$ in the following three cases: 
+We will mainly instantiate $M_N$ in the following three cases: 
 \begin{enumerate}
 \item $N$ is the monoid $\Gamma^*$ of words over $\Gamma$.
 \item $N$ is the boolean monoid $\mathbf 2$.
