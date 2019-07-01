@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex main"] 1560873199 "main.aux" "main.bbl" "main" 1561369099
+["bibtex main"] 1560873199 "main.aux" "main.bbl" "main" 1561985986
   "/usr/local/texlive/2016/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "bib.bib" 1554283557 1015 9f8c9d667bbe3f4a816de6365b51e73e ""
-  "main.aux" 1561369099 1188 4fa6ae8937e43904a093556ebdd41cf0 ""
+  "main.aux" 1561985985 1188 4fa6ae8937e43904a093556ebdd41cf0 ""
   "main.bcf" 0 -1 0 ""
   (generated)
-  "main.blg"
   "main.bbl"
-["pdflatex"] 1561369098 "/Users/nathan/Documents/postdoc wrszw/smok/main.tex" "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf" "main" 1561369099
-  "/Users/nathan/Documents/postdoc wrszw/smok/main.aux" 1561369099 1188 4fa6ae8937e43904a093556ebdd41cf0 ""
+  "main.blg"
+["pdflatex"] 1561985985 "/Users/nathan/Documents/postdoc wrszw/smok/main.tex" "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf" "main" 1561985986
+  "/Users/nathan/Documents/postdoc wrszw/smok/main.aux" 1561985985 1188 4fa6ae8937e43904a093556ebdd41cf0 ""
   "/Users/nathan/Documents/postdoc wrszw/smok/main.tex" 1561369095 775 fddf17176248b17bd5145f5339be3f5f ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -143,15 +143,15 @@
   "RegToBound.tex" 1559896021 3375 97463ba066baf62ceb1e0535ddade1a6 ""
   "introduction.tex" 1559894359 413 3afdf55fe2679c347a00aa49d9d292f5 ""
   "macros.sty" 1559379630 4950 effc8cb638538cfa225c38a41e48ee39 ""
-  "main.aux" 1561369099 1188 4fa6ae8937e43904a093556ebdd41cf0 ""
+  "main.aux" 1561985985 1188 4fa6ae8937e43904a093556ebdd41cf0 ""
   "main.bbl" 1560873199 49 0eba253fc001332e731e8aba3f23127b "bibtex main"
   "main.tex" 1561369095 775 fddf17176248b17bd5145f5339be3f5f ""
-  "main.toc" 1561369099 714 0806b5e061661346e991d061f20ecf63 ""
-  "prelim.tex" 1560864297 13443 2cad7285a3b20a90c9f00b3138da5f94 ""
+  "main.toc" 1561985985 714 0806b5e061661346e991d061f20ecf63 ""
+  "prelim.tex" 1561985985 13469 357ec7fb397709a203c2ed33fe4f05aa ""
   (generated)
-  "main.aux"
   "/Users/nathan/Documents/postdoc wrszw/smok/main.log"
-  "main.pdf"
   "main.toc"
   "/Users/nathan/Documents/postdoc wrszw/smok/main.pdf"
+  "main.pdf"
   "main.log"
+  "main.aux"
