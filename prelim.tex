@@ -1,14 +1,19 @@
-\subsection{Polyrational functions}
+\subsection{Polyregular functions}
 
-\subsubsection{One-pebble transducers}
-A one-pebble transducer of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a two way automaton (meaning that it has a reading head, called here a pebble, which can scan the word on both directions) which reads words over $\Sigma^*$, and has the ability to output words over $\Gamma^*$ on every transition. A configuration looks like this:
-\begin{center}
-Picture
-\end{center} 
+\paragraph{Words and languages}  
+Let $\Sigma$ be an alphabet, we denote by $\Sigma^*$
+ the set of finite words over $\Sigma$. The empty word is written $\epsilon$. If $w\in \Sigma^*$, $w[i]$ is the $i^{th}$ letter of the word $w$.
+
+The powerset of $E$ is denoted by $\mathbf 2^E$.
+
+If $i, j \in \mathbb{N}$, $[i,j]$ denotes the set $\set{m \in \mathbb{N} |\ i\leq m\leq j}$. In particular, if $ i>j$ then $[i,j]=\emptyset$. 
+
+\subsubsection{$1$-pebble transducers}
+A $1$-pebble transducer, (usually known as a two-way transducer) of input alphabet $\Sigma$ and output alphabet $\Gamma$ is a two way automaton (meaning that it has a reading head, called here a pebble, which can scan the word on both directions) which reads words over $\Sigma^*$, and has the ability to output words over $\Gamma^*$ on every transition. 
 The output of a one pebble transducer is the concatenation of the outputs of the transitions it took along a run.
 
 \begin{definition}\label{def:1pebble}
-A 1-pebble transducer is a tuple $(\Sigma,\Gamma, Q, q_I, q_F, \delta)$, which consists of:
+A $1$-pebble transducer is a tuple $(\Sigma,\Gamma, Q, q_I, q_F, \delta)$, which consists of:
 \begin{itemize}
 \item a finite input alphabet $\Sigma$ and a finite output alphabet $\Gamma$; 
 \item a finite set of states $Q$;
@@ -39,8 +44,8 @@ i.e. a run where the first configuration is initial, the last one is final, and 
 
 \subsubsection{$k$-pebble transducers}
 
-In the literature~\cite{}, a $k$-pebble transducer is a transducer with $k$ reading heads. The movement of these heads is subject to a stack discipline: only the pebble on top of the stack can move.
-In this paper, we will work with a different yet equivalent definition of $k$-pebble transducer. Here a $k$-pebble transducer is a collection of $k$ one-pebble automata. The idea is that the transducer number $k$ can, along its run, call transducer $k-1$ to run over its current configuration. Then transducer $k-1$ can itself call transducer $k-2$ to run over its current configuration, and so on.
+In the literature (see \textit{e.g.}~\cite{Bojanczyk18}), a $k$-pebble transducer is a transducer with $k$ reading heads. The movement of these heads is subject to a stack discipline: only the pebble on top of the stack can move.
+In this paper, we will work with a different yet equivalent definition of $k$-pebble transducer. Here a $k$-pebble transducer is a collection of $k$ $1$-pebble transducers. The idea is that the transducer number $k$ can, along its run, call transducer $k-1$ to run over \emph{its} current configuration. Then transducer $k-1$ can itself call transducer $k-2$ to run over its current configuration, and so on.
 \begin{center}
 Picture
 \end{center}
